@@ -1,0 +1,20 @@
+/**
+ * @file
+ * VVj Hero.
+ *
+ * Filename:     vvjh-style.css
+ * Website:      https://www.flashwebcenter.com
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
+ */
+.vvjh .hero-content {
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid grey;
+}
+
+.vvjh .hero-content:hover,
+.vvjh .hero-content:focus {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}

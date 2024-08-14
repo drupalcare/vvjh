@@ -1,0 +1,223 @@
+<?php
+
+/**
+ * @file
+ * Provides the module implementation for vvjh.
+ *
+ * Contains template preprocessing and theme definitions for Views.
+ *
+ * Filename:     vvjh.module
+ * Website:      https://www.flashwebcenter.com
+ * Description:  template.
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
+ */
+
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function vvjh_help($route_name, RouteMatchInterface $route_match): ?string {
+  if ($route_name === 'help.page.vvjh') {
+    return _vvjh_helper_render_readme();
+  }
+  return NULL;
+}
+
+/**
+ * Helper function to render README.md.
+ *
+ * @return string
+ *   The rendered content of README.md.
+ */
+function _vvjh_helper_render_readme(): string {
+  $readme_path = __DIR__ . '/README.md';
+  $text = file_get_contents($readme_path);
+
+  if ($text === FALSE) {
+    return t('README.md file not found.');
+  }
+
+  if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
+    return '<pre>' . htmlspecialchars($text) . '</pre>';
+  }
+
+  // Use the Markdown filter to render the README.
+  $filter_manager = \Drupal::service('plugin.manager.filter');
+  $settings = \Drupal::config('markdown.settings')->getRawData();
+  $filter = $filter_manager->createInstance('markdown', ['settings' => $settings]);
+  return $filter->process($text, 'en')->getProcessedText();
+}
+
+/**
+ * Implements hook_theme().
+ */
+function vvjh_theme($existing, $type, $theme, $path) {
+  return [
+    'views_view_vvjh_fields' => [
+      'variables' => [
+        'view' => NULL,
+        'options' => [],
+        'row' => NULL,
+        'field_alias' => NULL,
+        'attributes' => [],
+        'title_attributes' => [],
+        'content_attributes' => [],
+        'title_prefix' => [],
+        'title_suffix' => [],
+        'fields' => [],
+      ],
+      'template' => 'views-view-vvjh-fields',
+      'path' => $path . '/templates',
+    ],
+    'views_view_vvjh' => [
+      'variables' => [
+        'view' => NULL,
+        'rows' => [],
+        'options' => [],
+      ],
+      'template' => 'views-view-vvjh',
+      'path' => $path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views_view_vvjh.
+ */
+function template_preprocess_views_view_vvjh(array &$variables) {
+  // Load necessary views theme functions.
+  \Drupal::moduleHandler()->loadInclude('views', 'inc', 'views.theme');
+
+  // Access the style plugin handler.
+  $handler = $variables['view']->style_plugin;
+
+  // Initialize list attributes array.
+  $list_attributes = [];
+
+  // Conditionally add options as data attributes.
+  if (!empty($handler->options['overlay_position'])) {
+    $list_attributes['data-overlay-position'] = $handler->options['overlay_position'];
+  }
+
+  if (!empty($handler->options['hero_style'])) {
+    $list_attributes['data-hero-style'] = $handler->options['hero_style'];
+  }
+
+  if (!empty($handler->options['hero_speed'])) {
+    $list_attributes['data-hero-speed'] = $handler->options['hero_speed'];
+  }
+
+  if (!empty($handler->options['animation_easing'])) {
+    $list_attributes['data-animation-easing'] = $handler->options['animation_easing'];
+  }
+
+  if (!empty($handler->options['unique_id'])) {
+    $list_attributes['data-unique-id'] = $handler->options['unique_id'];
+  }
+
+  if (!empty($handler->options['available_breakpoints'])) {
+    $list_attributes['data-available-breakpoints'] = $handler->options['available_breakpoints'];
+  }
+
+  if (isset($handler->options['enable_css'])) {
+    $list_attributes['data-enable-css'] = $handler->options['enable_css'] ? 'true' : 'false';
+  }
+
+  if (!empty($handler->options['min_height'])) {
+    $list_attributes['data-min-height'] = $handler->options['min_height'];
+  }
+
+  if (!empty($handler->options['max_content_width'])) {
+    $list_attributes['data-max-content-width'] = $handler->options['max_content_width'];
+  }
+
+  if (!empty($handler->options['max_width'])) {
+    $list_attributes['data-max-width'] = $handler->options['max_width'];
+  }
+
+  // Calculate and pass the background_rgb variable to the template.
+  if (!empty($handler->options['overlay_bg_color'])) {
+    $rgb = _vvjc_hex_to_rgb($handler->options['overlay_bg_color']);
+    $opacity = $handler->options['overlay_bg_opacity'] ?? 1;
+    $background_rgb = "rgba({$rgb['r']}, {$rgb['g']}, {$rgb['b']}, $opacity)";
+    $variables['background_rgb'] = $background_rgb;
+  }
+  else {
+    // Explicitly set to null if no color is chosen.
+    $variables['background_rgb'] = NULL;
+  }
+
+  // Create an Attribute object for the list.
+  $variables['list_attributes'] = new Attribute($list_attributes);
+
+  // Pass options to the template for direct access.
+  $variables['options'] = $handler->options;
+
+  // Pass additional settings to the template.
+  $variables['settings'] = [
+    'view_id' => $variables['view']->dom_id,
+    'overlay_position' => $handler->options['overlay_position'],
+    'hero_style' => $handler->options['hero_style'],
+    'hero_speed' => $handler->options['hero_speed'],
+    'animation_easing' => $handler->options['animation_easing'],
+    'unique_id' => $handler->options['unique_id'],
+    'available_breakpoints' => $handler->options['available_breakpoints'],
+    'enable_css' => $handler->options['enable_css'],
+    'min_height' => $handler->options['min_height'],
+    'max_content_width' => $handler->options['max_content_width'],
+    'max_width' => $handler->options['max_width'],
+  ];
+
+  // Customize theme hook suggestions for rows.
+  if (!empty($variables['rows'])) {
+    foreach ($variables['rows'] as $key => $row) {
+      if (isset($row['#theme']) && is_array($row['#theme'])) {
+        foreach ($row['#theme'] as $idx => $theme_hook_suggestion) {
+          // Modify theme hook suggestions to use the custom theme function.
+          $variables['rows'][$key]['#theme'][$idx] = str_replace('views_view_fields', 'views_view_vvjh_fields', $theme_hook_suggestion);
+        }
+      }
+    }
+  }
+
+  // Call the default preprocess function for unformatted views.
+  template_preprocess_views_view_unformatted($variables);
+}
+
+
+/**
+ * Prepares variables for views_view_vvjh_fields template.
+ */
+function template_preprocess_views_view_vvjh_fields(array &$variables) {
+  // Load necessary views theme functions.
+  \Drupal::moduleHandler()->loadInclude('views', 'inc', 'views.theme');
+
+  // Preprocess views view fields.
+  template_preprocess_views_view_fields($variables);
+}
+
+/**
+ * Helper function to convert hex color to RGB.
+ *
+ * @param string $hex
+ *   The hex color code.
+ *
+ * @return array
+ *   An associative array with 'r', 'g', 'b' values.
+ */
+function _vvjh_hex_to_rgb(string $hex): array {
+  $hex = ltrim($hex, '#');
+
+  // Handle short hex format (e.g., #123)
+  if (strlen($hex) === 3) {
+    $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+  }
+
+  return [
+    'r' => hexdec(substr($hex, 0, 2)),
+    'g' => hexdec(substr($hex, 2, 2)),
+    'b' => hexdec(substr($hex, 4, 2)),
+  ];
+}

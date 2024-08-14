@@ -1,0 +1,79 @@
+{#
+  @file
+  Template for rendering a Hero using vanilla JavaScript in a Drupal Views style plugin.
+
+  This template provides a structured way to render content as a hero with accessibility considerations.
+
+  Available options:
+  - unique_id: A unique identifier for the hero.
+  - hero_style: The style of the hero (fade, zoom, slide from top, right, bottom, left).
+  - hero_speed: The speed of the hero animation.
+  - animation_easing: The easing function for the animation.
+  - min_height: Minimum height of the hero container.
+  - max_width: The maximum width of the hero container.
+  - max_content_width: The maximum width for the hero content.
+  - overlay_position: Position of the overlay content.
+  - background_rgb: The RGBA color value for the overlay background.
+#}
+
+{# Set up variables for use in the template #}
+{% set unique_id = options.unique_id %}
+{% set hero_id = 'vvjh-' ~ unique_id %}
+
+{# Retrieve additional options for use in the template #}
+{% set max_width = options.max_width %}
+{% set min_height = options.min_height %}
+{% set max_content_width = options.max_content_width %}
+{% set hero_style = options.hero_style %}
+{% set hero_speed = options.hero_speed %}
+{% set animation_easing = options.animation_easing %}
+{% set overlay_position = options.overlay_position %}
+{% set background_rgb = background_rgb %}
+
+{# Set the classes for the hero based on the provided options #}
+{% set classes = [
+  'vvjh',
+] %}
+
+{# Render the main hero container #}
+<div {{ attributes.addClass(classes).setAttribute('id', hero_id) }}
+     data-breakpoints="{{ options.available_breakpoints }}"
+     role="region"
+     tabindex="0">
+
+  <div class="hero-inner" style="max-width: {{ max_width }}px;">
+
+    {% for key, row in rows %}
+      {% set row_content = row.content|render %}
+
+      {# Split the content to separate front and back sides #}
+      {% set split_content = row_content|split('<div class="vvjh-separator"></div>') %}
+      {% set front_content = split_content[0] %}
+      {% set back_content = split_content[1]|default('') %}
+
+      <div class="hero-wrapper {{ hero_style }}"
+           style="min-height: {{ min_height }}vw;"
+           role="group"
+           aria-labelledby="{{ hero_id }}-front-{{ key + 1 }} {{ hero_id }}-content-{{ key + 1 }}"
+           tabindex="0">
+
+        <div class="hero-image"
+             role="img"
+             aria-labelledby="{{ hero_id }}-front-{{ key + 1 }}"
+             tabindex="0">
+          {{ front_content|safe_html }}
+        </div>
+
+        <div class="hero-content {{ overlay_position }}"
+             style="{% if background_rgb %}background-color:{{ background_rgb }}; {% endif %}transition: {{ hero_speed }}s {{ animation_easing }}; max-width: {{ max_content_width }}%;"
+             role="complementary"
+             aria-labelledby="{{ hero_id }}-content-{{ key + 1 }}"
+             tabindex="0">
+          {{ back_content|safe_html }}
+        </div>
+
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
