@@ -186,7 +186,6 @@ function template_preprocess_views_view_vvjh(array &$variables) {
   template_preprocess_views_view_unformatted($variables);
 }
 
-
 /**
  * Prepares variables for views_view_vvjh_fields template.
  */

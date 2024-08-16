@@ -6,6 +6,7 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
+
 @media (min-width:48rem) {
   .vvjh .hero-wrapper {
     position: relative;
@@ -46,85 +47,85 @@
     opacity: 0;
   }
 
-  .vvjh .hero-wrapper.fade .hero-content {
+  .vvjh .hero-wrapper.a-fade .hero-content {
     opacity: 0;
   }
 
-  .vvjh .hero-wrapper.zoom .hero-content {
+  .vvjh .hero-wrapper.a-zoom .hero-content {
     transform: scale(0);
   }
 
-  .vvjh .hero-wrapper.top .hero-content {
+  .vvjh .hero-wrapper.a-top .hero-content {
     transform: translateY(-100%);
   }
 
-  .vvjh .hero-wrapper.right .hero-content {
+  .vvjh .hero-wrapper.a-right .hero-content {
     transform: translateX(100%);
   }
 
-  .vvjh .hero-wrapper.bottom .hero-content {
+  .vvjh .hero-wrapper.a-bottom .hero-content {
     transform: translateY(100%);
   }
 
-  .vvjh .hero-wrapper.left .hero-content {
+  .vvjh .hero-wrapper.a-left .hero-content {
     transform: translateX(-100%);
   }
 
-  .vvjh .hero-wrapper.fade.active .hero-content {
+  .vvjh .hero-wrapper.a-fade.active .hero-content {
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.zoom.active .hero-content {
+  .vvjh .hero-wrapper.a-zoom.active .hero-content {
     transform: scale(1);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.top.active .hero-content {
+  .vvjh .hero-wrapper.a-top.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.right.active .hero-content {
+  .vvjh .hero-wrapper.a-right.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.bottom.active .hero-content {
+  .vvjh .hero-wrapper.a-bottom.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.left.active .hero-content {
+  .vvjh .hero-wrapper.a-left.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
 
   /* Display Container */
-  .vvjh .hero-content.top-left {
+  .vvjh .hero-content.d-top-left {
     position: absolute;
     left: 0;
     top: 0;
   }
 
-  .vvjh .hero-content.top-right {
+  .vvjh .hero-content.d-top-right {
     position: absolute;
     right: 0;
     top: 0;
   }
 
-  .vvjh .hero-content.bottom-left {
+  .vvjh .hero-content.d-bottom-left {
     position: absolute;
     left: 0;
     bottom: 0;
   }
 
-  .vvjh .hero-content.bottom-right {
+  .vvjh .hero-content.d-bottom-right {
     position: absolute;
     right: 0;
     bottom: 0;
   }
 
-  .vvjh .hero-content.middle {
+  .vvjh .hero-content.d-middle {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -132,7 +133,7 @@
     -ms-transform: translate(-50%, -50%);
   }
 
-  .vvjh .hero-content.left {
+  .vvjh .hero-content.d-left {
     position: absolute;
     top: 50%;
     left: 0%;
@@ -140,7 +141,7 @@
     -ms-transform: translate(-0%, -50%);
   }
 
-  .vvjh .hero-content.right {
+  .vvjh .hero-content.d-right {
     position: absolute;
     top: 50%;
     right: 0%;
@@ -148,7 +149,7 @@
     -ms-transform: translate(0%, -50%);
   }
 
-  .vvjh .hero-content.top-middle {
+  .vvjh .hero-content.d-top-middle {
     position: absolute;
     left: 50%;
     top: 0;
@@ -156,7 +157,7 @@
     -ms-transform: translate(-50%, 0%);
   }
 
-  .vvjh .hero-content.bottom-middle {
+  .vvjh .hero-content.d-bottom-middle {
     position: absolute;
     left: 50%;
     bottom: 0;
