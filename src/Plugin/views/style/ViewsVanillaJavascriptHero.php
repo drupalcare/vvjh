@@ -133,7 +133,7 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
         'd-bottom-middle' => $this->t('Bottom Middle'),
       ],
       '#default_value' => $this->options['overlay_position'],
-      '#description' => $this->t('Select the position where the content overlay will appear within the hero section. This controls where text and other elements will be placed on top of the background image. <strong>Due to limitations in CSS, sliding animations may not center content as expected. Consider using alternative animations or positioning methods for better results. Middle positioning may not work correctly with slide animations.</strong>'),
+      '#description' => $this->t('Select the position where the content overlay will appear within the hero section. This controls where text and other elements will be placed on top of the background image.'),
       '#required' => TRUE,
     ];
 
