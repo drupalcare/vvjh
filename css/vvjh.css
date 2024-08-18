@@ -29,8 +29,8 @@
 }
 
 .vvjh .hero-inner {
-  display: grid;
-  grid-template-columns: 1fr;
+  margin: 0 auto;
+  display: block;
   overflow: hidden;
   background-color: transparent;
   width: 100%;

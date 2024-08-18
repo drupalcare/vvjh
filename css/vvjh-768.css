@@ -9,7 +9,6 @@
 
 @media (min-width:48rem) {
   .vvjh .hero-wrapper {
-    position: relative;
     overflow: hidden;
     background-color: transparent;
     width: 100%;
@@ -35,12 +34,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  /* Hero content animation */
-  .vvjh .hero-wrapper {
-    position: relative;
-    overflow: hidden;
   }
 
   .vvjh .hero-content {
