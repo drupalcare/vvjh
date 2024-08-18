@@ -6,6 +6,7 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
+
 @media (min-width:87.5rem) {
   .vvjh .hero-wrapper {
     overflow: hidden;
@@ -20,17 +21,13 @@
     padding: 0 1rem;
   }
 
-  .hero-content-inner {
+  .hero-content {
+    position: relative;
+    margin: 0;
     padding: 1rem;
   }
 
-  .hero-content-inner,
-  .hero-content {
-    margin: 0;
-    position: relative;
-  }
-
-  .vvjh .hero-wrapper .hero-image img {
+  .vvjh .hero-wrapper > .hero-image img {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,59 +36,59 @@
     object-fit: cover;
   }
 
-  .hero-content-inner {
+  .vvjh .hero-content {
     opacity: 0;
   }
 
-  .vvjh .hero-wrapper.a-fade .hero-content-inner {
+  .vvjh .hero-wrapper.a-fade .hero-content {
     opacity: 0;
   }
 
-  .vvjh .hero-wrapper.a-zoom .hero-content-inner {
-    transform: scale(0.8);
+  .vvjh .hero-wrapper.a-zoom .hero-content {
+    transform: scale(0);
   }
 
-  .vvjh .hero-wrapper.a-top .hero-content-inner {
+  .vvjh .hero-wrapper.a-top .hero-content {
     transform: translateY(-100%);
   }
 
-  .vvjh .hero-wrapper.a-right .hero-content-inner {
+  .vvjh .hero-wrapper.a-right .hero-content {
     transform: translateX(100%);
   }
 
-  .vvjh .hero-wrapper.a-bottom .hero-content-inner {
+  .vvjh .hero-wrapper.a-bottom .hero-content {
     transform: translateY(100%);
   }
 
-  .vvjh .hero-wrapper.a-left .hero-content-inner {
+  .vvjh .hero-wrapper.a-left .hero-content {
     transform: translateX(-100%);
   }
 
-  .vvjh .hero-wrapper.a-fade.active .hero-content-inner {
+  .vvjh .hero-wrapper.a-fade.active .hero-content {
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-zoom.active .hero-content-inner {
+  .vvjh .hero-wrapper.a-zoom.active .hero-content {
     transform: scale(1);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-top.active .hero-content-inner {
+  .vvjh .hero-wrapper.a-top.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-right.active .hero-content-inner {
+  .vvjh .hero-wrapper.a-right.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-bottom.active .hero-content-inner {
+  .vvjh .hero-wrapper.a-bottom.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-left.active .hero-content-inner {
+  .vvjh .hero-wrapper.a-left.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
@@ -176,10 +173,6 @@
     width: 100%;
     margin-top: 1rem;
     transition: none !important;
-  }
-
-  .vvjh .hero-content {
-    margin-top: 1rem;
   }
 
 }

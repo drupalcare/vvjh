@@ -64,14 +64,12 @@
           {{ hero_image|safe_html }}
         </div>
 
-        <div class="hero-content">
-          <div class="hero-content-inner {{ overlay_position }}"
+        <div class="hero-content {{ overlay_position }}"
              style="{% if background_rgb %}background-color:{{ background_rgb }}; {% endif %}transition: {{ hero_speed }}s {{ animation_easing }}; max-width: {{ max_content_width }}%;"
              role="complementary"
              aria-labelledby="{{ hero_id }}-content-{{ key + 1 }}"
              tabindex="0">
           {{ hero_content|safe_html }}
-          </div>
         </div>
 
       </div>
