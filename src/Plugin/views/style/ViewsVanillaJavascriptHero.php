@@ -40,14 +40,20 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
     $options['overlay_position'] = ['default' => 'd-middle'];
     $options['hero_style'] = ['default' => 'a-fade'];
     $options['hero_speed'] = ['default' => '0.9'];
-    $options['overlay_bg_color'] = ['default' => '#000000'];
-    $options['overlay_bg_opacity'] = ['default' => '0.3'];
+    $options['overlay_bg_color'] = ['default' => '#ffffff'];
+    $options['overlay_bg_opacity'] = ['default' => '0.7'];
     $options['available_breakpoints'] = ['default' => '576'];
     $options['animation_easing'] = ['default' => 'ease'];
     $options['enable_css'] = ['default' => TRUE];
-    $options['min_height'] = ['default' => 40];
+    $options['min_height'] = [
+      'default' => [
+        'value' => 50,
+        'unit' => 'vw',
+      ],
+    ];
     $options['max_content_width'] = ['default' => 60];
     $options['max_width'] = ['default' => 1200];
+    $options['hero_item_width'] = ['default' => 0];
     return $options;
   }
 
@@ -97,13 +103,51 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
     ];
 
     $form['min_height'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Minimum Height'),
+      '#description' => $this->t('Define the minimum height of the hero container by entering a value and selecting a unit. Choose from the following units:
+        <ul>
+          <li><strong>Viewport Width (vw):</strong> 1vw is equal to 1 percent of the viewport’s width. For example, if the viewport is 1000px wide, 10vw will equal 100px.</li>
+          <li><strong>Viewport Height (vh):</strong> 1vh is equal to 1 percent of the viewport’s height. For example, if the viewport is 1000px high, 10vh will equal 100px.</li>
+          <li><strong>Pixels (px):</strong> Specifies an exact number of pixels for the height, regardless of the viewport size.</li>
+          <li><strong>Percentage (%):</strong> Specifies a percentage of the parent container’s height.</li>
+          <li><strong>Ems (em):</strong> Relative to the font size of the element. For example, if the font size is 16px, 1em equals 16px.</li>
+          <li><strong>Root Ems (rem):</strong> Relative to the font size of the root element (typically <code>&lt;html&gt;</code>). For example, if the root font size is 16px, 1rem equals 16px.</li>
+        </ul>'
+      ),
+      '#attributes' => [
+        'class' => ['min-height-wrapper'],
+      ],
+    ];
+
+    $min_height = $this->options['min_height'] ?? ['value' => 50, 'unit' => 'vw'];
+
+    $form['min_height']['value'] = [
       '#type' => 'number',
-      '#title' => $this->t('Min Height (vw)'),
-      '#default_value' => $this->options['min_height'],
-      '#description' => $this->t("Specifies the minimum height for the entire hero container, set in viewport width units (vw). One vw unit represents 1 percent of the viewport's width, so if the viewport is 1000px wide, 10vw would equal 100px. This ensures that the hero container maintains a minimum height relative to the width of the viewport."),
-      '#step' => 1,
-      '#min' => 1,
-      '#required' => TRUE,
+      '#title' => $this->t('Height Value'),
+      '#default_value' => $min_height['value'] ?? 50,
+      '#description' => $this->t('Enter the numeric value for the minimum height.'),
+      '#attributes' => [
+        'style' => 'width: 150px; display: inline-block;',
+      ],
+    ];
+
+    $form['min_height']['unit'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Height Unit (vw, vh, px, %, em, rem)'),
+      '#default_value' => $min_height['unit'] ?? 'vw',
+      '#options' => [
+        'vw' => $this->t('Viewport Width (vw)'),
+        'vh' => $this->t('Viewport Height (vh)'),
+        'px' => $this->t('Pixels (px)'),
+        '%' => $this->t('Percentage (%)'),
+        'em' => $this->t('Ems (em)'),
+        'rem' => $this->t('Root Ems (rem)'),
+      ],
+      '#attributes' => [
+        'style' => 'width: 150px; display: inline-block;',
+      ],
+      '#description' => $this->t('Select the unit for the minimum height.'),
     ];
 
     $form['max_content_width'] = [
@@ -198,6 +242,16 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
       '#attributes' => [
         'oninput' => 'document.getElementById("background-opacity-value").innerText = this.value;',
       ],
+    ];
+
+    $form['hero_item_width'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Hero Card Width (px)'),
+      '#default_value' => $this->options['hero_item_width'],
+      '#description' => $this->t('Set the width of each Hero Card in pixels. Use this setting to display hero items as Hero Cards or a list. If set to zero, each Hero Card will expand to the full available width, creating a list layout. Otherwise, specifying a width will display each item as a Hero Card with the specified width. Note: To use this feature, you must have more than one item.'),
+      '#step' => 1,
+      '#min' => 0,
+      '#required' => TRUE,
     ];
 
     $form['enable_css'] = [

@@ -15,14 +15,12 @@
   - overlay_position: Position of the overlay content.
   - background_rgb: The RGBA color value for the overlay background.
 #}
-
 {# Set up variables for use in the template #}
 {% set unique_id = options.unique_id %}
 {% set hero_id = 'vvjh-' ~ unique_id %}
 
 {# Retrieve additional options for use in the template #}
 {% set max_width = options.max_width %}
-{% set min_height = options.min_height %}
 {% set max_content_width = options.max_content_width %}
 {% set hero_style = options.hero_style %}
 {% set hero_speed = options.hero_speed %}
@@ -30,9 +28,20 @@
 {% set overlay_position = options.overlay_position %}
 {% set background_rgb = background_rgb %}
 
+{% set hero_item_width = '' %}
+{% if options.hero_item_width > 0 %}
+  {% set hero_item_width = options.hero_item_width %}
+{% endif %}
+
+{# Determine if there is one or multiple items #}
+{% set item_count = rows|length %}
+{% set item_class = item_count == 1 ? 'vvjh-one' : 'vvjh-multiple' %}
+
 {# Set the classes for the hero based on the provided options #}
 {% set classes = [
   'vvjh',
+  item_class,
+  options.hero_item_width != 0 ? 'max-w' : ''
 ] %}
 
 {# Render the main hero container #}
@@ -41,7 +50,7 @@
      role="region"
      tabindex="0">
 
-  <div class="hero-inner" style="max-width: {{ max_width }}px;">
+  <div class="vvjh-inner"{% if hero_item_width and item_class == 'vvjh-multiple' %} style="grid-template-columns: repeat(auto-fill, minmax({{ hero_item_width }}px, 1fr));"{% endif %}>
 
     {% for key, row in rows %}
       {% set row_content = row.content|render %}
@@ -52,26 +61,25 @@
       {% set hero_content = split_content[1]|default('') %}
 
       <div class="hero-wrapper {{ hero_style }}"
-           style="min-height: {{ min_height }}vw;"
            role="group"
            aria-labelledby="{{ hero_id }}-image-{{ key + 1 }} {{ hero_id }}-content-{{ key + 1 }}"
            tabindex="0">
+        <div class="hero-wrapper-inner" style="max-width: {{ max_width }}px; min-height: {{ min_height }};">
+          <div class="hero-image"
+               role="img"
+               aria-labelledby="{{ hero_id }}-image-{{ key + 1 }}"
+               tabindex="0">
+            {{ hero_image|safe_html }}
+          </div>
 
-        <div class="hero-image"
-             role="img"
-             aria-labelledby="{{ hero_id }}-image-{{ key + 1 }}"
-             tabindex="0">
-          {{ hero_image|safe_html }}
-        </div>
-
-        <div class="hero-content {{ overlay_position }}"
-             style="{% if background_rgb %}background-color:{{ background_rgb }}; {% endif %}transition: {{ hero_speed }}s {{ animation_easing }}; max-width: {{ max_content_width }}%;"
-             role="complementary"
-             aria-labelledby="{{ hero_id }}-content-{{ key + 1 }}"
-             tabindex="0">
-          {{ hero_content|safe_html }}
-        </div>
-
+          <div class="hero-content {{ overlay_position }}"
+               style="{% if background_rgb %}background-color:{{ background_rgb }}; {% endif %}transition: {{ hero_speed }}s {{ animation_easing }}; max-width: {{ max_content_width }}%;"
+               role="complementary"
+               aria-labelledby="{{ hero_id }}-content-{{ key + 1 }}"
+               tabindex="0">
+            {{ hero_content|safe_html }}
+          </div>
+       </div>
       </div>
     {% endfor %}
 

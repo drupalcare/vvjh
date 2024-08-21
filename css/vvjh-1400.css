@@ -8,13 +8,12 @@
  */
 
 @media (min-width:87.5rem) {
-  .vvjh .hero-wrapper {
+  .vvjh .hero-wrapper-inner {
     overflow: hidden;
     background-color: transparent;
-    width: 100%;
   }
 
-  .hero-wrapper {
+  .hero-wrapper-inner {
     display: flex;
     align-items: center;
     margin: auto;
@@ -27,7 +26,7 @@
     padding: 1rem;
   }
 
-  .vvjh .hero-wrapper > .hero-image img {
+  .vvjh .hero-wrapper .hero-image img {
     position: absolute;
     top: 0;
     left: 0;
@@ -161,7 +160,7 @@
 }
 
 @media (max-width:87.5rem) {
-  .vvjh .hero-wrapper {
+  .vvjh .hero-wrapper-inner {
     width: 100%;
     margin-bottom: 1rem;
     min-height: initial !important;

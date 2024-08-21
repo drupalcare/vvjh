@@ -14,6 +14,7 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Template\Attribute;
+use Drupal\vvjh\Plugin\views\style\ViewsVanillaJavascriptHero;
 
 /**
  * Implements hook_help().
@@ -137,6 +138,10 @@ function template_preprocess_views_view_vvjh(array &$variables) {
     $list_attributes['data-max-width'] = $handler->options['max_width'];
   }
 
+  if (!empty($handler->options['hero_item_width'])) {
+    $list_attributes['data-hero-item-width'] = $handler->options['hero_item_width'];
+  }
+
   // Calculate and pass the background_rgb variable to the template.
   if (!empty($handler->options['overlay_bg_color'])) {
     $rgb = _vvjc_hex_to_rgb($handler->options['overlay_bg_color']);
@@ -147,6 +152,17 @@ function template_preprocess_views_view_vvjh(array &$variables) {
   else {
     // Explicitly set to null if no color is chosen.
     $variables['background_rgb'] = NULL;
+  }
+
+  // Process the section height as a combined value (e.g., "75vh").
+  if (!empty($handler->options['min_height']['value']) && !empty($handler->options['min_height']['unit'])) {
+    $unit = $handler->options['min_height']['unit'];
+    $section_height = $handler->options['min_height']['value'] . $unit;
+    $variables['min_height'] = $section_height;
+  }
+  else {
+    // Default value if not set.
+    $variables['min_height'] = '40vw';
   }
 
   // Create an Attribute object for the list.
@@ -168,6 +184,7 @@ function template_preprocess_views_view_vvjh(array &$variables) {
     'min_height' => $handler->options['min_height'],
     'max_content_width' => $handler->options['max_content_width'],
     'max_width' => $handler->options['max_width'],
+    'hero_item_width' => $handler->options['hero_item_width'],
   ];
 
   // Customize theme hook suggestions for rows.
@@ -195,6 +212,17 @@ function template_preprocess_views_view_vvjh_fields(array &$variables) {
 
   // Preprocess views view fields.
   template_preprocess_views_view_fields($variables);
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function vvjh_preprocess_views_view(&$variables) {
+  // Check if the view is using the custom Views Vanilla JavaScript Hero style plugin.
+  if ($variables['view']->style_plugin instanceof ViewsVanillaJavascriptHero) {
+    // Add the custom class to the view wrapper.
+    $variables['attributes']['class'][] = 'vvj-hero';
+  }
 }
 
 /**

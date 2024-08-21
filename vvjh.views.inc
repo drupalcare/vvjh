@@ -35,9 +35,21 @@ function vvjh_views_data_alter(array &$data): void {
         'description' => t('The max width for the hero content.'),
       ],
       'min_height' => [
-        'type' => 'numeric',
-        'label' => t('Min Height'),
-        'description' => t('The min height for the hero banner.'),
+        'title' => t('Min Height'),
+        'help' => t('Define the height of the hero section.'),
+        'field' => [
+          'id' => 'array',
+          'schema' => [
+            'value' => [
+              'type' => 'numeric',
+              'description' => t('The numeric value for the height.'),
+            ],
+            'unit' => [
+              'type' => 'string',
+              'description' => t('The unit for the height (vw, vh, px, %, em, rem).'),
+            ],
+          ],
+        ],
       ],
       'overlay_position' => [
         'type' => 'string',
@@ -73,6 +85,10 @@ function vvjh_views_data_alter(array &$data): void {
         'type' => 'string',
         'label' => t('Responsive Breakpoints'),
         'description' => t('Defines the breakpoints at which the hero will be disabled (e.g., 576px, 768px, 992px, 1200px, 1400px).'),
+      ],
+      'hero_item_width' => [
+        'type' => 'numeric',
+        'label' => t('Accordion Item Width'),
       ],
     ],
   ];

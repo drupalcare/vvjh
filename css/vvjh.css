@@ -23,15 +23,32 @@
   box-sizing: border-box;
 }
 
-.vvjh {
-  position: relative;
+.vvjh,
+.vvjh-inner {
+  position: initial;
   width: 100%;
 }
 
-.vvjh .hero-inner {
+.vvjh .vvjh-inner {
   margin: 0 auto;
   display: block;
   overflow: hidden;
   background-color: transparent;
   width: 100%;
+}
+
+.vvjh .hero-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.vvjh .hero-wrapper-inner {
+  margin: 0 auto;
+  display: block;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.vvjh.vvjh-multiple.max-w .vvjh-inner {
+  display: grid;
 }
