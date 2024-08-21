@@ -46,7 +46,7 @@ function vvjh_views_data_alter(array &$data): void {
             ],
             'unit' => [
               'type' => 'string',
-              'description' => t('The unit for the height (vw, vh, px, %, em, rem).'),
+              'description' => t('The unit for the height (vw, vh, px, em, rem).'),
             ],
           ],
         ],

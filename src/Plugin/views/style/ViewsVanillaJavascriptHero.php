@@ -110,7 +110,6 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
           <li><strong>Viewport Width (vw):</strong> 1vw is equal to 1 percent of the viewport’s width. For example, if the viewport is 1000px wide, 10vw will equal 100px.</li>
           <li><strong>Viewport Height (vh):</strong> 1vh is equal to 1 percent of the viewport’s height. For example, if the viewport is 1000px high, 10vh will equal 100px.</li>
           <li><strong>Pixels (px):</strong> Specifies an exact number of pixels for the height, regardless of the viewport size.</li>
-          <li><strong>Percentage (%):</strong> Specifies a percentage of the parent container’s height.</li>
           <li><strong>Ems (em):</strong> Relative to the font size of the element. For example, if the font size is 16px, 1em equals 16px.</li>
           <li><strong>Root Ems (rem):</strong> Relative to the font size of the root element (typically <code>&lt;html&gt;</code>). For example, if the root font size is 16px, 1rem equals 16px.</li>
         </ul>'
@@ -140,7 +139,6 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
         'vw' => $this->t('Viewport Width (vw)'),
         'vh' => $this->t('Viewport Height (vh)'),
         'px' => $this->t('Pixels (px)'),
-        '%' => $this->t('Percentage (%)'),
         'em' => $this->t('Ems (em)'),
         'rem' => $this->t('Root Ems (rem)'),
       ],
