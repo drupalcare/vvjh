@@ -18,8 +18,8 @@
   white-space: nowrap;
 }
 
-.vvjh,
-.vvjh * {
+.vvj-hero,
+.vvj-hero * {
   box-sizing: border-box;
 }
 
@@ -51,4 +51,12 @@
 
 .vvjh.vvjh-multiple.max-w .vvjh-inner {
   display: grid;
+  gap: 1rem;
+}
+
+.vvj-hero,
+.vvj-hero .view-content {
+  width: 100%;
+  min-width: 100%;
+  display: block!important;
 }

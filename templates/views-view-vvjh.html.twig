@@ -30,7 +30,7 @@
 
 {% set hero_item_width = '' %}
 {% if options.hero_item_width > 0 %}
-  {% set hero_item_width = options.hero_item_width %}
+{% set hero_item_width = 'grid-template-columns: repeat(auto-fill, minmax(' ~ options.hero_item_width ~ 'px, 1fr)); ' %}
 {% endif %}
 
 {# Determine if there is one or multiple items #}
@@ -50,7 +50,7 @@
      role="region"
      tabindex="0">
 
-  <div class="vvjh-inner"{% if hero_item_width and item_class == 'vvjh-multiple' %} style="grid-template-columns: repeat(auto-fill, minmax({{ hero_item_width }}px, 1fr));"{% endif %}>
+  <div class="vvjh-inner"{% if hero_item_width and item_class == 'vvjh-multiple' %} style="{{ hero_item_width }}"{% endif %}>
 
     {% for key, row in rows %}
       {% set row_content = row.content|render %}
