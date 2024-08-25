@@ -144,7 +144,7 @@ function template_preprocess_views_view_vvjh(array &$variables) {
 
   // Calculate and pass the background_rgb variable to the template.
   if (!empty($handler->options['overlay_bg_color'])) {
-    $rgb = _vvjc_hex_to_rgb($handler->options['overlay_bg_color']);
+    $rgb = _vvjh_hex_to_rgb($handler->options['overlay_bg_color']);
     $opacity = $handler->options['overlay_bg_opacity'] ?? 1;
     $background_rgb = "rgba({$rgb['r']}, {$rgb['g']}, {$rgb['b']}, $opacity)";
     $variables['background_rgb'] = $background_rgb;
