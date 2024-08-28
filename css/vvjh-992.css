@@ -8,25 +8,22 @@
  */
 
 @media (min-width:62rem) {
-  .vvjh .hero-wrapper-inner {
+  .vvjh.br-992 .hero-wrapper-inner {
     overflow: hidden;
     background-color: transparent;
-  }
-
-  .hero-wrapper-inner {
     display: flex;
     align-items: center;
     margin: auto;
     padding: 0 1rem;
   }
 
-  .hero-content {
+  .vvjh.br-992 .hero-content {
     position: relative;
     margin: 0;
     padding: 1rem;
   }
 
-  .vvjh .hero-wrapper .hero-image img {
+  .vvjh.br-992 .hero-wrapper .hero-image img {
     position: absolute;
     top: 0;
     left: 0;
@@ -35,89 +32,89 @@
     object-fit: cover;
   }
 
-  .vvjh .hero-content {
+  .vvjh.br-992 .hero-content {
     opacity: 0;
   }
 
-  .vvjh .hero-wrapper.a-fade .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-fade .hero-content {
     opacity: 0;
   }
 
-  .vvjh .hero-wrapper.a-zoom .hero-content {
+   .vvjh.br-992 .hero-wrapper.a-zoom .hero-content {
     transform: scale(0);
   }
 
-  .vvjh .hero-wrapper.a-top .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-top .hero-content {
     transform: translateY(-100%);
   }
 
-  .vvjh .hero-wrapper.a-right .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-right .hero-content {
     transform: translateX(100%);
   }
 
-  .vvjh .hero-wrapper.a-bottom .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-bottom .hero-content {
     transform: translateY(100%);
   }
 
-  .vvjh .hero-wrapper.a-left .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-left .hero-content {
     transform: translateX(-100%);
   }
 
-  .vvjh .hero-wrapper.a-fade.active .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-fade.active .hero-content {
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-zoom.active .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-zoom.active .hero-content {
     transform: scale(1);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-top.active .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-top.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-right.active .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-right.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-bottom.active .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-bottom.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh .hero-wrapper.a-left.active .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-left.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
 
   /* Display Container */
-  .vvjh .hero-content.d-top-left {
+  .vvjh.br-992 .hero-content.d-top-left {
     position: absolute;
     left: 0;
     top: 0;
   }
 
-  .vvjh .hero-content.d-top-right {
+  .vvjh.br-992 .hero-content.d-top-right {
     position: absolute;
     right: 0;
     top: 0;
   }
 
-  .vvjh .hero-content.d-bottom-left {
+  .vvjh.br-992 .hero-content.d-bottom-left {
     position: absolute;
     left: 0;
     bottom: 0;
   }
 
-  .vvjh .hero-content.d-bottom-right {
+  .vvjh.br-992 .hero-content.d-bottom-right {
     position: absolute;
     right: 0;
     bottom: 0;
   }
 
-  .vvjh .hero-content.d-middle {
+  .vvjh.br-992 .hero-content.d-middle {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -125,7 +122,7 @@
     -ms-transform: translate(-50%, -50%);
   }
 
-  .vvjh .hero-content.d-left {
+  .vvjh.br-992 .hero-content.d-left {
     position: absolute;
     top: 50%;
     left: 0%;
@@ -133,7 +130,7 @@
     -ms-transform: translate(-0%, -50%);
   }
 
-  .vvjh .hero-content.d-right {
+  .vvjh.br-992 .hero-content.d-right {
     position: absolute;
     top: 50%;
     right: 0%;
@@ -141,7 +138,7 @@
     -ms-transform: translate(0%, -50%);
   }
 
-  .vvjh .hero-content.d-top-middle {
+  .vvjh.br-992 .hero-content.d-top-middle {
     position: absolute;
     left: 50%;
     top: 0;
@@ -149,7 +146,7 @@
     -ms-transform: translate(-50%, 0%);
   }
 
-  .vvjh .hero-content.d-bottom-middle {
+  .vvjh.br-992 .hero-content.d-bottom-middle {
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -160,13 +157,13 @@
 }
 
 @media (max-width:62rem) {
-  .vvjh .hero-wrapper-inner {
+  .vvjh.br-992 .hero-wrapper-inner {
     width: 100%;
     margin-bottom: 1rem;
     min-height: initial !important;
   }
 
-  .vvjh .hero-content {
+  .vvjh.br-992 .hero-content {
     background-color: transparent !important;
     max-width: 100% !important;
     width: 100%;
