@@ -21,7 +21,7 @@
 
 {# Retrieve additional options for use in the template #}
 {% set max_width = options.max_width %}
-{% set max_content_width = options.max_content_width ~ '%' %}
+{% set max_content_width = options.max_content_width %}
 {% set hero_style = options.hero_style %}
 {% set hero_speed = options.hero_speed ~ 's' %}
 {% set animation_easing = options.animation_easing %}
@@ -59,7 +59,7 @@
             {{ hero_image|safe_html }}
           </div>
 
-          <div class="hero-content {{ overlay_position }}" style="{% if background_rgb %} --bg-color:{{ background_rgb }}; {% endif %}--hero-speed:{{ hero_speed }}; --animation-easing:{{ animation_easing }}; --max-content-width: {{ max_content_width }};" role="complementary" aria-labelledby="{{ hero_id }}-content-{{ key + 1 }}" tabindex="0">
+          <div class="hero-content {{ overlay_position }}" style="{% if background_rgb %} --bg-hero-color:{{ background_rgb }}; {% endif %}--hero-speed:{{ hero_speed }}; --animation-easing:{{ animation_easing }}; --max-content-width: {{ max_content_width }};" role="complementary" aria-labelledby="{{ hero_id }}-content-{{ key + 1 }}" tabindex="0">
             {{ hero_content|safe_html }}
           </div>
        </div>

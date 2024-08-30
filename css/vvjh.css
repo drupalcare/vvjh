@@ -57,7 +57,8 @@
   overflow: hidden;
   background-color: transparent;
 }
+
 .vvj-hero .hero-content {
-  background: var(--bg-color);
-  max-width: var(--max-content-width);
+  background: var(--bg-hero-color);
+  max-width: calc(var(--max-content-width) * 1%);
 }
