@@ -218,7 +218,8 @@ function template_preprocess_views_view_vvjh_fields(array &$variables) {
  * Implements hook_preprocess_views_view().
  */
 function vvjh_preprocess_views_view(&$variables) {
-  // Check if the view is using the custom Views Vanilla JavaScript Hero style plugin.
+  // Check if the view is using the custom Views Vanilla JavaScript
+  // Hero style plugin.
   if ($variables['view']->style_plugin instanceof ViewsVanillaJavascriptHero) {
     // Add the custom class to the view wrapper.
     $variables['attributes']['class'][] = 'vvj-hero';
