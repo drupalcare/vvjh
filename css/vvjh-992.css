@@ -6,8 +6,14 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-
 @media (min-width:62rem) {
+  .vvjh.br-992.vvjh-multiple.max-w .vvjh-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(var(--hero-item-width) * 1px), 1fr));
+    --grid-gap: 1rem;
+    gap: var(--grid-gap);
+  }
+
   .vvjh.br-992 .hero-wrapper-inner {
     overflow: hidden;
     background-color: transparent;
@@ -17,7 +23,9 @@
     padding: 0 1rem;
   }
 
-  .vvjh.br-992 .hero-content {
+  .vvjh.br-990 .hero-content {
+    transition: var(--hero-speed) var(--animation-easing);
+    opacity: 0;
     position: relative;
     margin: 0;
     padding: 1rem;
@@ -32,15 +40,11 @@
     object-fit: cover;
   }
 
-  .vvjh.br-992 .hero-content {
-    opacity: 0;
-  }
-
   .vvjh.br-992 .hero-wrapper.a-fade .hero-content {
     opacity: 0;
   }
 
-   .vvjh.br-992 .hero-wrapper.a-zoom .hero-content {
+  .vvjh.br-992 .hero-wrapper.a-zoom .hero-content {
     transform: scale(0);
   }
 
@@ -157,6 +161,13 @@
 }
 
 @media (max-width:62rem) {
+  .vvjh.br-992.vvjh-multiple.max-w .vvjh-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    --grid-gap: 1rem;
+    gap: var(--grid-gap);
+  }
+
   .vvjh.br-992 .hero-wrapper-inner {
     width: 100%;
     margin-bottom: 1rem;

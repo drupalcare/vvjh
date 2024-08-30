@@ -27,7 +27,7 @@
 .vvj-hero .view-content {
   width: 100%;
   min-width: 100%;
-  display: block!important;
+  display: block !important;
 }
 
 .vvjh,
@@ -50,13 +50,14 @@
 }
 
 .vvjh .hero-wrapper-inner {
+  max-width: calc(var(--max-width) * 1px);
+  min-height: var(--min-height);
   margin: 0 auto;
   display: block;
   overflow: hidden;
   background-color: transparent;
 }
-
-.vvjh.vvjh-multiple.max-w .vvjh-inner {
-  display: grid;
-  gap: 1rem;
+.vvj-hero .hero-content {
+  background: var(--bg-color);
+  max-width: var(--max-content-width);
 }

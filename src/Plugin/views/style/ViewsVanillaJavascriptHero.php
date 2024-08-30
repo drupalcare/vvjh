@@ -133,7 +133,7 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
 
     $form['min_height']['unit'] = [
       '#type' => 'select',
-      '#title' => $this->t('Height Unit (vw, vh, px, %, em, rem)'),
+      '#title' => $this->t('Height Unit (vw, vh, px, em, rem)'),
       '#default_value' => $min_height['unit'] ?? 'vw',
       '#options' => [
         'vw' => $this->t('Viewport Width (vw)'),
