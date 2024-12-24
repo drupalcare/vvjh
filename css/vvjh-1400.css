@@ -96,26 +96,26 @@
   /* Display Container */
   .vvjh.br-1400 .hero-content.d-top-left {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 16px;
+    top: 16px;
   }
 
   .vvjh.br-1400 .hero-content.d-top-right {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 16px;
+    top: 16px;
   }
 
   .vvjh.br-1400 .hero-content.d-bottom-left {
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: 16px;
+    bottom: 16px;
   }
 
   .vvjh.br-1400 .hero-content.d-bottom-right {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 16px;
+    bottom: 16px;
   }
 
   .vvjh.br-1400 .hero-content.d-middle {
@@ -129,7 +129,7 @@
   .vvjh.br-1400 .hero-content.d-left {
     position: absolute;
     top: 50%;
-    left: 0%;
+    left: 16px;
     transform: translate(0%, -50%);
     -ms-transform: translate(-0%, -50%);
   }
@@ -137,7 +137,7 @@
   .vvjh.br-1400 .hero-content.d-right {
     position: absolute;
     top: 50%;
-    right: 0%;
+    right: 16px;
     transform: translate(0%, -50%);
     -ms-transform: translate(0%, -50%);
   }
@@ -145,7 +145,7 @@
   .vvjh.br-1400 .hero-content.d-top-middle {
     position: absolute;
     left: 50%;
-    top: 0;
+    top: 16px;
     transform: translate(-50%, 0%);
     -ms-transform: translate(-50%, 0%);
   }
@@ -153,7 +153,7 @@
   .vvjh.br-1400 .hero-content.d-bottom-middle {
     position: absolute;
     left: 50%;
-    bottom: 0;
+    bottom: 16px;
     transform: translate(-50%, 0%);
     -ms-transform: translate(-50%, 0%);
   }
