@@ -1,5 +1,4 @@
 vvjh:
-  version: VERSION
   css:
     theme:
       css/vvjh.css: { }
@@ -12,37 +11,31 @@ vvjh:
     - core/once
 
 vvjh-style:
-  version: VERSION
   css:
     theme:
       css/vvjh-style.css: { }
 
 vvjh__576:
-  version: VERSION
   css:
     theme:
       css/vvjh-576.css: { }
 
 vvjh__768:
-  version: VERSION
   css:
     theme:
       css/vvjh-768.css: { }
 
 vvjh__992:
-  version: VERSION
   css:
     theme:
       css/vvjh-992.css: { }
 
 vvjh__1200:
-  version: VERSION
   css:
     theme:
       css/vvjh-1200.css: { }
 
 vvjh__1400:
-  version: VERSION
   css:
     theme:
       css/vvjh-1400.css: { }
