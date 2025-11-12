@@ -1,0 +1,50 @@
+views.style.views_vvjh:
+  type: views_style
+  label: 'Views Vanilla JavaScript Hero'
+  mapping:
+    unique_id:
+      type: integer
+      label: 'Unique identifier for hero instance'
+    overlay_position:
+      type: string
+      label: 'Overlay content position'
+    hero_style:
+      type: string
+      label: 'Hero animation style'
+    hero_speed:
+      type: float
+      label: 'Hero animation speed'
+    overlay_bg_color:
+      type: string
+      label: 'Overlay background color'
+    overlay_bg_opacity:
+      type: float
+      label: 'Overlay background opacity'
+    available_breakpoints:
+      type: string
+      label: 'Responsive breakpoint'
+    animation_easing:
+      type: string
+      label: 'Animation easing function'
+    enable_css:
+      type: boolean
+      label: 'Enable default CSS styling'
+    min_height:
+      type: mapping
+      label: 'Minimum height configuration'
+      mapping:
+        value:
+          type: integer
+          label: 'Height value'
+        unit:
+          type: string
+          label: 'Height unit'
+    max_content_width:
+      type: integer
+      label: 'Maximum content width percentage'
+    max_width:
+      type: integer
+      label: 'Maximum container width in pixels'
+    hero_item_width:
+      type: integer
+      label: 'Hero card width in pixels'

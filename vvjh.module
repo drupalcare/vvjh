@@ -12,6 +12,7 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 
+declare(strict_types=1);
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Markup;
@@ -23,7 +24,7 @@ use Drupal\vvjh\Plugin\views\style\ViewsVanillaJavascriptHero;
 /**
  * Implements hook_help().
  */
-function vvjh_help($route_name, RouteMatchInterface $route_match): ?string {
+function vvjh_help(string $route_name, RouteMatchInterface $route_match): ?string {
   if ($route_name === 'help.page.vvjh') {
     return _vvjh_helper_render_readme();
   }
@@ -41,14 +42,13 @@ function _vvjh_helper_render_readme(): string {
   $text = file_get_contents($readme_path);
 
   if ($text === FALSE) {
-    return t('README.md file not found.');
+    return (string) t('README.md file not found.');
   }
 
   if (!\Drupal::moduleHandler()->moduleExists('markdown')) {
     return '<pre>' . htmlspecialchars($text) . '</pre>';
   }
 
-  // Use the Markdown filter to render the README.
   $filter_manager = \Drupal::service('plugin.manager.filter');
   $settings = \Drupal::config('markdown.settings')->getRawData();
   $filter = $filter_manager->createInstance('markdown', ['settings' => $settings]);
@@ -58,7 +58,7 @@ function _vvjh_helper_render_readme(): string {
 /**
  * Implements hook_theme().
  */
-function vvjh_theme($existing, $type, $theme, $path) {
+function vvjh_theme(array $existing, string $type, string $theme, string $path): array {
   return [
     'views_view_vvjh_fields' => [
       'variables' => [
@@ -91,17 +91,18 @@ function vvjh_theme($existing, $type, $theme, $path) {
 /**
  * Implements hook_preprocess_HOOK() for views_view_vvjh.
  */
-function template_preprocess_views_view_vvjh(array &$variables) {
-  // Load necessary views theme functions.
-  \Drupal::moduleHandler()->loadInclude('views', 'inc', 'views.theme');
+function template_preprocess_views_view_vvjh(array &$variables): void {
+  static $views_theme_loaded = FALSE;
+  if (!$views_theme_loaded) {
+    \Drupal::moduleHandler()->loadInclude('views', 'inc', 'views.theme');
+    $views_theme_loaded = TRUE;
+  }
 
-  // Access the style plugin handler.
+  /** @var \Drupal\vvjh\Plugin\views\style\ViewsVanillaJavascriptHero $handler */
   $handler = $variables['view']->style_plugin;
 
-  // Initialize list attributes array.
   $list_attributes = [];
 
-  // Conditionally add options as data attributes.
   if (!empty($handler->options['overlay_position'])) {
     $list_attributes['data-overlay-position'] = $handler->options['overlay_position'];
   }
@@ -146,7 +147,6 @@ function template_preprocess_views_view_vvjh(array &$variables) {
     $list_attributes['data-hero-item-width'] = $handler->options['hero_item_width'];
   }
 
-  // Calculate and pass the background_rgb variable to the template.
   if (!empty($handler->options['overlay_bg_color'])) {
     $rgb = _vvjh_hex_to_rgb($handler->options['overlay_bg_color']);
     $opacity = $handler->options['overlay_bg_opacity'] ?? 1;
@@ -154,28 +154,22 @@ function template_preprocess_views_view_vvjh(array &$variables) {
     $variables['background_rgb'] = $background_rgb;
   }
   else {
-    // Explicitly set to null if no color is chosen.
     $variables['background_rgb'] = NULL;
   }
 
-  // Process the section height as a combined value (e.g., "75vh").
   if (!empty($handler->options['min_height']['value']) && !empty($handler->options['min_height']['unit'])) {
     $unit = $handler->options['min_height']['unit'];
     $section_height = $handler->options['min_height']['value'] . $unit;
     $variables['min_height'] = $section_height;
   }
   else {
-    // Default value if not set.
     $variables['min_height'] = '40vw';
   }
 
-  // Create an Attribute object for the list.
   $variables['list_attributes'] = new Attribute($list_attributes);
 
-  // Pass options to the template for direct access.
   $variables['options'] = $handler->options;
 
-  // Pass additional settings to the template.
   $variables['settings'] = [
     'view_id' => $variables['view']->dom_id,
     'overlay_position' => $handler->options['overlay_position'],
@@ -191,41 +185,44 @@ function template_preprocess_views_view_vvjh(array &$variables) {
     'hero_item_width' => $handler->options['hero_item_width'],
   ];
 
-  // Customize theme hook suggestions for rows.
   if (!empty($variables['rows'])) {
     foreach ($variables['rows'] as $key => $row) {
       if (isset($row['#theme']) && is_array($row['#theme'])) {
         foreach ($row['#theme'] as $idx => $theme_hook_suggestion) {
-          // Modify theme hook suggestions to use the custom theme function.
           $variables['rows'][$key]['#theme'][$idx] = str_replace('views_view_fields', 'views_view_vvjh_fields', $theme_hook_suggestion);
         }
       }
     }
   }
 
-  // Call the default preprocess function for unformatted views.
   template_preprocess_views_view_unformatted($variables);
 }
 
 /**
  * Prepares variables for views_view_vvjh_fields template.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - view: The view object.
+ *   - options: Configuration options.
+ *   - row: The result row object.
+ *   - fields: An array of field render arrays.
  */
-function template_preprocess_views_view_vvjh_fields(array &$variables) {
-  // Load necessary views theme functions.
-  \Drupal::moduleHandler()->loadInclude('views', 'inc', 'views.theme');
+function template_preprocess_views_view_vvjh_fields(array &$variables): void {
+  static $views_theme_loaded = FALSE;
+  if (!$views_theme_loaded) {
+    \Drupal::moduleHandler()->loadInclude('views', 'inc', 'views.theme');
+    $views_theme_loaded = TRUE;
+  }
 
-  // Preprocess views view fields.
   template_preprocess_views_view_fields($variables);
 }
 
 /**
  * Implements hook_preprocess_views_view().
  */
-function vvjh_preprocess_views_view(&$variables) {
-  // Check if the view is using the custom Views Vanilla JavaScript
-  // Hero style plugin.
+function vvjh_preprocess_views_view(array &$variables): void {
   if ($variables['view']->style_plugin instanceof ViewsVanillaJavascriptHero) {
-    // Add the custom class to the view wrapper.
     $variables['attributes']['class'][] = 'vvj-hero';
   }
 }
@@ -242,7 +239,6 @@ function vvjh_preprocess_views_view(&$variables) {
 function _vvjh_hex_to_rgb(string $hex): array {
   $hex = ltrim($hex, '#');
 
-  // Handle short hex format (e.g., #123)
   if (strlen($hex) === 3) {
     $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
   }
@@ -257,7 +253,7 @@ function _vvjh_hex_to_rgb(string $hex): array {
 /**
  * Implements hook_token_info().
  */
-function vvjh_token_info() {
+function vvjh_token_info(): array {
   return [
     'tokens' => [
       'view' => [
@@ -273,56 +269,152 @@ function vvjh_token_info() {
 /**
  * Implements hook_tokens().
  */
-function vvjh_tokens($type, $tokens, array $data = [], array $options = []) {
+function vvjh_tokens(string $type, array $tokens, array $data = [], array $options = []): array {
   $replacements = [];
 
-  if (in_array($type, ['vvjh', 'global']) && isset($data['view']) && $data['view'] instanceof ViewExecutable) {
-    $view = $data['view'];
+  if (!in_array($type, ['vvjh', 'global'])) {
+    return $replacements;
+  }
 
-    if (!empty($view->result)) {
-      $first_row = $view->result[0];
-      $field_handlers = $view->display_handler->getHandlers('field');
+  if (!isset($data['view']) || !($data['view'] instanceof ViewExecutable)) {
+    return $replacements;
+  }
 
-      /** @var \Drupal\Core\Render\RendererInterface $renderer */
-      $renderer = \Drupal::service('renderer');
+  $view = $data['view'];
 
-      foreach ($tokens as $token => $name) {
-        $plain = FALSE;
-        $field_id = $token;
+  if (!($view->style_plugin instanceof ViewsVanillaJavascriptHero)) {
+    return $replacements;
+  }
 
-        if (str_ends_with($token, ':plain')) {
-          $plain = TRUE;
-          $field_id = substr($token, 0, -6);
-        }
+  if (empty($view->result)) {
+    return $replacements;
+  }
 
-        if (!isset($field_handlers[$field_id])) {
-          continue;
-        }
+  $first_row = $view->result[0];
+  $field_handlers = $view->display_handler->getHandlers('field');
 
-        try {
-          $handler = $field_handlers[$field_id];
-          $value = $plain && method_exists($handler, 'advancedRenderText')
-            ? $handler->advancedRenderText($first_row)
-            : $handler->advancedRender($first_row);
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
+  $renderer = \Drupal::service('renderer');
 
-          if (is_array($value)) {
-            // Render safely using renderPlain to avoid LogicException.
-            $rendered = $renderer->renderPlain($value);
-          }
-          else {
-            $rendered = (string) $value;
-          }
+  foreach ($tokens as $token => $name) {
+    if (!preg_match('/^[a-zA-Z0-9_]+(:plain)?$/', $token)) {
+      \Drupal::logger('vvjh')->warning('Invalid token format: @token', ['@token' => $token]);
+      continue;
+    }
 
-          $replacements["[vvjh:$token]"] = $plain
-            ? Html::decodeEntities(strip_tags($rendered))
-            : Markup::create($rendered);
-        }
-        catch (\Throwable $e) {
-          $replacements["[vvjh:$token]"] = '';
-        }
+    $plain = FALSE;
+    $field_id = $token;
+
+    if (str_ends_with($token, ':plain')) {
+      $plain = TRUE;
+      $field_id = substr($token, 0, -6);
+    }
+
+    if (!isset($field_handlers[$field_id])) {
+      continue;
+    }
+
+    try {
+      $handler = $field_handlers[$field_id];
+      $value = $plain && method_exists($handler, 'advancedRenderText')
+        ? $handler->advancedRenderText($first_row)
+        : $handler->advancedRender($first_row);
+
+      if (is_array($value)) {
+        $rendered = $renderer->renderPlain($value);
       }
+      else {
+        $rendered = (string) $value;
+      }
+
+      $replacements["[vvjh:$token]"] = $plain
+        ? Html::decodeEntities(strip_tags($rendered))
+        : Markup::create($rendered);
+    }
+    catch (\Throwable $e) {
+      \Drupal::logger('vvjh')->error('Token replacement failed for @token: @message', [
+        '@token' => $token,
+        '@message' => $e->getMessage(),
+      ]);
+      $replacements["[vvjh:$token]"] = '';
     }
   }
 
   return $replacements;
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function vvjh_views_data_alter(array &$data): void {
+  $data['views_style_plugin']['views_vvjh'] = [
+    'type' => 'views_style',
+    'label' => t('Views Vanilla JavaScript Hero'),
+    'mapping' => [
+      'unique_id' => [
+        'type' => 'string',
+        'label' => t('Unique ID'),
+        'description' => t('A unique numeric ID used to identify this view display.'),
+      ],
+      'hero_style' => [
+        'type' => 'string',
+        'label' => t('Hero Style'),
+        'description' => t('The style of the hero animation (e.g., fade, zoom, slide from top, right, bottom, left).'),
+      ],
+      'max_width' => [
+        'type' => 'numeric',
+        'label' => t('Max Width Main Container'),
+        'description' => t('The max width for the hero main container.'),
+      ],
+      'max_content_width' => [
+        'type' => 'numeric',
+        'label' => t('Max Width'),
+        'description' => t('The max width for the hero content.'),
+      ],
+      'min_height' => [
+        'type' => 'array',
+        'label' => t('Min Height'),
+        'description' => t('Define the height of the hero section.'),
+      ],
+      'overlay_position' => [
+        'type' => 'string',
+        'label' => t('Overlay Position'),
+        'description' => t('The position of the overlay content (center, left, right, top, bottom).'),
+      ],
+      'overlay_bg_color' => [
+        'type' => 'string',
+        'label' => t('Overlay Background Color'),
+        'description' => t('The background color for the overlay content.'),
+      ],
+      'overlay_bg_opacity' => [
+        'type' => 'float',
+        'label' => t('Overlay Background Opacity'),
+        'description' => t('The opacity level for the overlay background color, ranging from 0 to 1.'),
+      ],
+      'hero_speed' => [
+        'type' => 'numeric',
+        'label' => t('Hero Animation Speed'),
+        'description' => t('The speed of the hero animation (e.g., 0.9 for fast, 2 for slow).'),
+      ],
+      'animation_easing' => [
+        'type' => 'string',
+        'label' => t('Animation Easing'),
+        'description' => t('The easing function applied to the hero animation (ease, linear, ease-in, ease-out, ease-in-out).'),
+      ],
+      'enable_css' => [
+        'type' => 'boolean',
+        'label' => t('Enable CSS Library'),
+        'description' => t('Include the CSS library for styling the hero elements.'),
+      ],
+      'available_breakpoints' => [
+        'type' => 'string',
+        'label' => t('Responsive Breakpoints'),
+        'description' => t('Defines the breakpoints at which the hero will be disabled (e.g., 576px, 768px, 992px, 1200px, 1400px).'),
+      ],
+      'hero_item_width' => [
+        'type' => 'numeric',
+        'label' => t('Hero Item Width'),
+      ],
+    ],
+  ];
 }
