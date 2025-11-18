@@ -170,7 +170,7 @@
 
   .vvjh.br-1200 .hero-wrapper-inner {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-block-end: 1rem;
     min-height: initial !important;
   }
 
@@ -178,7 +178,7 @@
     background-color: transparent !important;
     max-width: 100% !important;
     width: 100%;
-    margin-top: 1rem;
+    margin-block-start: 1rem;
     transition: none !important;
   }
 

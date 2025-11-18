@@ -550,8 +550,46 @@ class ViewsVanillaJavascriptHero extends StylePluginBase {
   public function validate(): array {
     $errors = parent::validate();
 
+    // Check if using fields.
     if (!$this->usesFields()) {
-      $errors[] = $this->t('Views Hero requires Fields as row style and an image as the first field.');
+      $errors[] = $this->t('Views Hero requires Fields as row style.');
+    }
+    else {
+      // Check if first field is an image.
+      $fields = $this->view->display_handler->getHandlers('field');
+
+      if (empty($fields)) {
+        $errors[] = $this->t('Views Hero requires at least one field to be configured.');
+      }
+      else {
+        $first_field = reset($fields);
+        $is_image = FALSE;
+
+        // Check if it's an EntityField (not a global or custom field).
+        if ($first_field instanceof \Drupal\views\Plugin\views\field\EntityField) {
+          // Get field name from the field's definition.
+          $field_name = $first_field->definition['field_name'] ?? NULL;
+
+          if ($field_name) {
+            // Get the entity type from the view.
+            $entity_type_id = $this->view->getBaseEntityType()->id();
+
+            // Use entity field manager service to get field storage definitions.
+            $entity_field_manager = \Drupal::service('entity_field.manager');
+            $field_storage_definitions = $entity_field_manager->getFieldStorageDefinitions($entity_type_id);
+
+            // Check if this field exists and is an image type.
+            if (isset($field_storage_definitions[$field_name])) {
+              $field_type = $field_storage_definitions[$field_name]->getType();
+              $is_image = ($field_type === 'image');
+            }
+          }
+        }
+
+        if (!$is_image) {
+          $errors[] = $this->t('Views Hero requires the first field to be an Image field. Please add an image field as the first field in your Fields configuration.');
+        }
+      }
     }
 
     return $errors;
