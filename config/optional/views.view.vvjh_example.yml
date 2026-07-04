@@ -132,10 +132,6 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-            link_target: ''
-            link_popup: ''
-            link_popup_width: ''
-            link_popup_height: ''
           element_type: h2
           element_class: hero-title
           element_label_type: ''
@@ -346,18 +342,18 @@ display:
           grouping: {  }
           overlay_position: d-middle
           hero_style: a-fade
-          hero_speed: '0.9'
+          hero_speed: 0.9
           overlay_bg_color: '#000000'
-          overlay_bg_opacity: '0.3'
+          overlay_bg_opacity: 0.3
           available_breakpoints: '576'
           animation_easing: ease
-          enable_css: 1
+          enable_css: true
           min_height:
             value: 50
             unit: vw
-          max_content_width: '60'
-          max_width: '1200'
-          hero_item_width: '0'
+          max_content_width: 60
+          max_width: 1200
+          hero_item_width: 0
       row:
         type: fields
         options:
@@ -384,3 +380,54 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_image'
+  page_1:
+    id: page_1
+    display_title: 'Demo Page'
+    display_plugin: page
+    position: 1
+    display_options:
+      title: 'VVJH Hero Demo'
+      display_extenders: {  }
+      path: vvjh-example
+      defaults:
+        access: false
+      access:
+        type: perm
+        options:
+          perm: 'access administration pages'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:node.type.article'
+  block_1:
+    id: block_1
+    display_title: 'Hero Block'
+    display_plugin: block
+    position: 2
+    display_options:
+      title: 'Featured Articles'
+      display_extenders: {  }
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 3
+      defaults:
+        title: false
+        pager: false
+      block_description: 'VVJH Articles Hero Block'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:node.type.article'

@@ -1,89 +1,75 @@
-# Views Vanilla JavaScript Hero
+# Views Vanilla JavaScript Hero (VVJH)
 
-## Overview
-The **Views Vanilla JavaScript Hero** module (machine name: `vvjh`) is a 
-versatile and dynamic Views style plugin designed to render content items in 
-an engaging hero format using vanilla JavaScript. This module enhances your 
-site by adding a visually appealing, interactive hero effect to content 
-displayed through Drupal Views.
+A vanilla-JavaScript hero-section **Views format** for Drupal 11.3+ / 12.
+Renders the first row of a View as a hero (image + overlay content) with
+breakpoint-driven activation, six animation styles, eleven overlay positions,
+configurable overlay color/opacity, and AAA-conformant semantic markup.
+
+v2.0 builds on the **`drupal/vvj_core` foundation** (composer auto-installs it).
+Behavior runs in a `<vvjh-hero>` custom element extending `VvjElementBase`.
 
 ## Features
-- **Interactive Hero Boxes**: Display content items with hero animations 
-  for a dynamic user experience.
-- **Customizable Options**: Adjustable settings for hero style, speed, 
-  background colors, and more.
-- **Responsive Design**: Built-in breakpoints to ensure the hero adapts 
-  seamlessly to different screen sizes.
-- **Hover or Click Activation**: Choose whether the hero occurs on hover 
-  or click.
 
-## Configuration
-After installing and enabling the module, you can configure it through the 
-Views UI:
-
-1. **Hero Style**: Choose the hero animation style (e.g., Fade, Zoom, 
-   Top, Right, Bottom, Left).
-2. **Hero Speed**: Set the speed for the hero animation (e.g., 0.1 for 
-   fast, 2 for slow).
-3. **Background Colors**: Customize the background colors for the front and 
-   heroed sides of the box.
-4. **Available Breakpoints**: Select the breakpoints to ensure the hero is 
-   responsive (e.g., 576px, 768px, 992px, etc.).
-
-## Token Support in Views Text Areas
-
-In Views headers, footers, or empty text areas—when using *Global: Text area* or
-*Global: Unfiltered text*—there is an option called **"Use replacement tokens
-from the first row."**
-
-The default Twig-style tokens (e.g., `{{ title }}` or `{{ field_image }}`)
-**will not work** with the VVJH style. Instead, use the custom tokens provided
-by VVJH:
-
-**Examples:**
-
-- `{{ title }}` → `[vvjh:title]`  
-- `{{ field_image }}` → `[vvjh:field_image]`
-
-To strip any HTML from the output, you can append `:plain` to the token:
-
-- `[vvjh:title:plain]`
-
-These tokens pull data from the **first row** of the View result and are
-designed to work seamlessly with the VVJH rendering system.
-
-## Example Usage
-1. Create a new view or edit an existing view.
-2. Under the "Format" section, select "Views Vanilla JavaScript Hero" as 
-   the style.
-3. Configure the hero style, speed, background colors, and other settings 
-   as needed.
-4. Save the view and see the hero in action on the front end.
-
-## Additional Information
-- **Dependencies**: This module does not have any dependencies on other 
-  contributed modules.
-- **Compatibility**: Fully compatible with Drupal 10 and follows Drupal best 
-  practices.
+- Six animation styles: fade / zoom / slide-from-top / slide-from-right / slide-
+  from-bottom / slide-from-left
+- Eleven overlay positions: middle / top / bottom / left / right / four corners
+  / top-middle / bottom-middle
+- Configurable max width (px), max content width (%), min height (vw / vh / px /
+  em / rem)
+- Configurable hero-card width for multi-item heroes (0 = full-width list)
+- Hex + opacity → rgba overlay background
+- Five animation easing curves: ease / linear / ease-in / ease-out / ease-in-out
+- Configurable hero animation speed (0.1 – 2.0 s)
+- 5 responsive breakpoints (576 / 768 / 992 / 1200 / 1400 px) — hero animation
+  activates above the breakpoint
+- ARIA `role="region"`, labeled groups per row, accessible image and content
+  overlays
+- Lazy IntersectionObserver hydration; AbortController-tracked listeners
+- **Views tokens** — `[vvjh:field]` / `[vvjh:field:plain]` in Views text areas
+  with *Use replacement tokens from the first row*
+- **Drupal admin help** — `/admin/help/vvjh`
 
 ## Installation
-1. Download and install the module from 
-   [Drupal.org](https://www.drupal.org/project/vvjh).
-2. Enable the module through the Drupal admin interface or using Drush: 
-   `drush en vvjh`
-3. Clear caches to ensure the new plugin is available: `drush cr`
 
-## Troubleshooting
-If you encounter any issues or have suggestions for improvements, please open 
-an issue in the module's issue queue on Drupal.org.
+```bash
+composer require drupal/vvjh:^2.0
+drush en vvjh
+```
 
-## Maintainers
-- [Alaa Haddad](https://www.drupal.org/u/flashwebcenter)
+## Usage
 
-## Support
-For issues, feature requests, and general support, please use the 
-[issue queue](https://www.drupal.org/project/issues/vvjh).
+1. Create or edit a View.
+2. Set **Format** to *Views Vanilla JavaScript Hero*.
+3. Set **Show** to *Fields*.
+4. The first field MUST be an image — it becomes the hero background.
+5. Remaining fields render as the hero content overlay.
+6. Configure layout / position / animation / styling / responsive in the format
+   settings.
+7. Save.
+
+**Sample view:** Optional config `views.view.vvjh_example` (`config/optional/`)
+installs when there is no ID conflict.
+
+## Drop-in upgrade from 1.x
+
+`composer update drupal/vvjh && drush updb && drush cr` is sufficient. v2
+preserves:
+
+- Plugin ID `views_vvjh`, theme hook `views_view_vvjh`
+- Twig template names
+- All option keys (12 total, including the `min_height` array shape)
+- Library names (`vvjh`, `vvjh-style`, `vvjh__576/768/992/1200/1400`)
+- JS behavior key `Drupal.behaviors.VVJHero`
+- All CSS class names (`.vvjh`, `.vvjh-inner`, `.hero-wrapper`, `.hero-image`,
+  `.hero-content`, position classes, animation classes)
+
+Outer rendered tag changed from `<div>` to `<vvjh-hero>`. Theme selectors
+targeting `.vvjh` keep matching.
+
+The vvj_core foundation module ships a shared `safe_html` Twig filter, so v2
+drops the per-module `Drupal\vvjh\Twig\VVJHTwigExtension` — templates that use
+`|safe_html` keep working unchanged.
 
 ## License
-This project is licensed under the 
-[GNU General Public License, version 2 or later](http://www.gnu.org/licenses/gpl-2.0.html).
+
+GPL-2.0-or-later.

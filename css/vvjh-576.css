@@ -10,7 +10,9 @@
   .vvjh.br-576.vvjh-multiple.max-w .vvjh-inner {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(calc(var(--hero-item-width) * 1px), 1fr));
+
     --grid-gap: 1rem;
+
     gap: var(--grid-gap);
   }
 
@@ -34,7 +36,7 @@
   .vvjh.br-576 .hero-wrapper .hero-image img {
     position: absolute;
     top: 0;
-    left: 0;
+    inset-inline-start: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -96,66 +98,62 @@
   /* Display Container */
   .vvjh.br-576 .hero-content.d-top-left {
     position: absolute;
-    left: 16px;
+    inset-inline-start: 16px;
     top: 16px;
   }
 
   .vvjh.br-576 .hero-content.d-top-right {
     position: absolute;
-    right: 16px;
+    inset-inline-end: 16px;
     top: 16px;
   }
 
   .vvjh.br-576 .hero-content.d-bottom-left {
     position: absolute;
-    left: 16px;
+    inset-inline-start: 16px;
     bottom: 16px;
   }
 
   .vvjh.br-576 .hero-content.d-bottom-right {
     position: absolute;
-    right: 16px;
+    inset-inline-end: 16px;
     bottom: 16px;
   }
 
   .vvjh.br-576 .hero-content.d-middle {
     position: absolute;
     top: 50%;
-    left: 50%;
+    inset-inline-start: 50%;
     transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
   }
 
   .vvjh.br-576 .hero-content.d-left {
     position: absolute;
     top: 50%;
-    left: 16px;
+    inset-inline-start: 16px;
     transform: translate(0%, -50%);
-    -ms-transform: translate(-0%, -50%);
+    transform: translate(-0%, -50%);
   }
 
   .vvjh.br-576 .hero-content.d-right {
     position: absolute;
     top: 50%;
-    right: 16px;
+    inset-inline-end: 16px;
     transform: translate(0%, -50%);
-    -ms-transform: translate(0%, -50%);
   }
 
   .vvjh.br-576 .hero-content.d-top-middle {
     position: absolute;
-    left: 50%;
+    inset-inline-start: 50%;
     top: 16px;
     transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
   }
 
   .vvjh.br-576 .hero-content.d-bottom-middle {
     position: absolute;
-    left: 50%;
+    inset-inline-start: 50%;
     bottom: 16px;
     transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
   }
 
 }
@@ -164,7 +162,9 @@
   .vvjh.br-576.vvjh-multiple.max-w .vvjh-inner {
     display: grid;
     grid-template-columns: 1fr;
+
     --grid-gap: 1rem;
+
     gap: var(--grid-gap);
   }
 

@@ -38,11 +38,11 @@
   'vvjh',
   'br-' ~ breakpoint,
   item_class,
-  options.hero_item_width != 0 ? 'max-w' : ''
+  options.hero_item_width != 0 ? 'max-w' : '',
 ] %}
 
 {# Render the main hero container #}
-<div {{ attributes.addClass(classes).setAttribute('id', hero_id) }} data-breakpoints="{{ breakpoint }}" role="region" tabindex="0">
+<vvjh-hero {{ attributes.addClass(classes).setAttribute('id', hero_id) }} data-breakpoints="{{ breakpoint }}" role="region" tabindex="0">
   <div class="vvjh-inner"{% if hero_item_width > 0 and item_class == 'vvjh-multiple' %} style="--hero-item-width: {{ hero_item_width }}"{% endif %}>
 
     {% for key, row in rows %}
@@ -67,4 +67,4 @@
     {% endfor %}
 
   </div>
-</div>
+</vvjh-hero>
