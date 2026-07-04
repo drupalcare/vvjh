@@ -1,0 +1,199 @@
+<p><strong>The Vanilla Views suite F.L.A.S.H.C.R.P.T.B <span>FlashCrptb</span></strong> is a collection of ten powerful Drupal modules designed to enhance the visual and interactive experience of Drupal Views using pure, lightweight Vanilla JavaScript. Originally developed as <a href="https://www.drupal.org/project/paragraphs_bundles" target="_blank">Paragraphs Bundles</a>, these modules <a href="https://www.drupal.org/project/vvja" target="_blank">Accordion</a>, <a href="https://www.drupal.org/project/vvjb" target="_blank">Basic Carousel</a>, <a href="https://www.drupal.org/project/vvjc" target="_blank">3D Carousel</a>, <a href="https://www.drupal.org/project/vvjf" target="_blank">3D FlipBox</a>, <a href="https://www.drupal.org/project/vvjh" target="_blank">Hero</a>, <a href="https://www.drupal.org/project/vvjl" target="_blank">Lightbox</a>, <a href="https://www.drupal.org/project/vvjp" target="_blank">Parallax</a>, <a href="https://www.drupal.org/project/vvjr" target="_blank">Reveal</a>, <a href="https://www.drupal.org/project/vvjs" target="_blank">Slideshow</a>, and <a href="https://www.drupal.org/project/vvjt" target="_blank">Tabs</a>.
+</p>
+<p>Additionally, I have created a demo for each module: <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-accordion" target="_blank">Accordion Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-3d-carousel" target="_blank">3D Carousel Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-basic-carousel" target="_blank">Carousel Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-3d-flipbox" target="_blank">3D FlipBox Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-hero" target="_blank">Hero Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-lightbox" target="_blank">Lightbox Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-parallax" target="_blank">Parallax Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-reveal" target="_blank">Reveal Demo</a>, <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-slideshow" target="_blank">Slideshow Demo</a>, and <a href="https://unitedstarsofamerica.com/vanilla-views/views-vanilla-javascript-tabs" target="_blank">Tabs Demo</a>.
+To get started, check out our <a href="https://www.youtube.com/watch?v=MFQrQybLJEM" target="_blank">Video Demo</a> for a step-by-step guide on using the module effectively. Explore our mixed demos here: <a href="https://unitedstarsofamerica.com/node/417" target="_blank">Live Demo One</a> | <a href="https://unitedstarsofamerica.com/node/418" target="_blank">Live Demo Two</a>. The site for the live demo is built with the <a href="https://www.drupal.org/project/solo" target="_blank">Solo Theme</a>.
+</p>
+<div class="vvj-v2-notice">
+<p><strong>VVJ v2.x</strong> requires <a href="https://www.drupal.org/project/vvj_core">VVJ Core</a> (<code>composer require drupal/vvjh:^2.0</code> pulls it in automatically). Requires Drupal 11.3+ or 12 and PHP 8.3+. v2 runs front-end behavior in custom elements via the shared <code>vvj_core</code> foundation; token and JavaScript API details below reflect v2.</p>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Views Vanilla JavaScript Hero</strong> module (machine name: <code>vvjh</code>) allows you to create visually appealing, full-width hero sections on your Drupal site using pure vanilla JavaScript, without any dependencies on jQuery. A hero section typically consists of a large background image with text or other content overlayed on top, making it ideal for highlighting key messages or calls to action. This module integrates seamlessly with the Views module, offering a new display style that can be selected when creating or editing views. Additionally, when used with Drupal's responsive images, the hero section becomes fully responsive, ensuring it looks great on all screen sizes. Beyond traditional hero sections, you can also use this module to build "Hero Cards," which combine visual impact with structured content presentation. These features make the module perfect for landing pages, headers, or any other prominent areas of your site where you want to make a strong visual impact.</p>
+
+<h3>Features</h3>
+<ul>
+  <li><strong>Hero Display Style</strong>: Adds a new "Hero" display style to Views, allowing content to be displayed in an impactful hero section.</li>
+  <li><strong>Customizable Options</strong>: Provides various settings to customize the hero section, including:
+    <ul>
+      <li><strong>Overlay Position</strong>: Choose where the content overlay appears within the hero section.</li>
+      <li><strong>Background Color</strong>: Set the background color for the overlay that appears behind the content.</li>
+      <li><strong>Animation Style</strong>: Select from different animation styles, such as fading, sliding, or zooming, to bring your hero section to life.</li>
+      <li><strong>Animation Speed</strong>: Control the speed of the hero section's content animation.</li>
+      <li><strong>Animation Easing</strong>: Choose the easing function for the content animation, providing smoother transitions.</li>
+      <li><strong>Hero Card Width</strong>: This feature allows you to set the width of each Hero Card in units such as <code>vw</code>, <code>vh</code>, <code>px</code>, <code>em</code>, or <code>rem</code>. Depending on the value set, hero items can be displayed as individual Hero Cards or in a list format. If set to zero, each Hero Card will expand to the full available width, creating a list layout. This is useful for controlling the presentation of multiple hero items.</li>
+      <li><strong>Height Value</strong>: Define the minimum height of the hero section in different units.</li>
+      <li><strong>Max Content Width</strong>: Determine the maximum width for the content within the hero section as a percentage of the hero’s total width.</li>
+      <li><strong>Overlay Background Opacity</strong>: Adjust the opacity of the background color for the overlay behind the hero content.</li>
+    </ul>
+  </li>
+  <li><strong>Responsive Design</strong>: Includes configurable breakpoints to ensure the hero section adapts seamlessly to different screen sizes. It works perfectly with Drupal's responsive images for full-width, responsive hero sections.</li>
+  <li><strong>Lightweight and Fast</strong>: Built with pure vanilla JavaScript, ensuring a modern, fast, and efficient user experience.</li>
+  <li><strong>Hero Card</strong>: Use this feature to build "Hero Cards," which are visually appealing, responsive cards that can either fill the entire width or be arranged in a grid or list format, depending on the configuration.</li>
+</ul>
+
+<h3>Accessibility</h3>
+<p>The <strong>Views Vanilla JavaScript Hero</strong> module is designed with accessibility in mind, ensuring that all users, including those with disabilities, can fully engage with your hero sections. Key accessibility features include:</p>
+<ul>
+  <li><strong>ARIA Roles and Properties</strong>: Proper ARIA roles and attributes are utilized to provide clear context and state information to screen readers.</li>
+  <li><strong>Keyboard Navigation</strong>: Ensures that users can navigate through the hero section using keyboard shortcuts.</li>
+  <li><strong>Focus Management</strong>: The currently displayed content is properly focused, enhancing the experience for keyboard and screen reader users.</li>
+</ul>
+
+<h3>Configuration</h3>
+<p>Once the module is installed and enabled, you can configure it via the Views UI:</p>
+<ol>
+  <li><strong>Overlay Position:</strong> Choose the position of the content overlay within the hero section (e.g., middle, left, right, top, bottom).</li>
+  <li><strong>Hero Style:</strong> Select the animation style for the hero content, including options like fade, zoom, and various slide directions.</li>
+  <li><strong>Hero Speed:</strong> Adjust the speed of the animation, from fast to slow.</li>
+  <li><strong>Overlay Background Color:</strong> Customize the background color of the overlay to match your site's design.</li>
+  <li><strong>Overlay Background Opacity:</strong> Control the transparency of the overlay background.</li>
+  <li><strong>Breakpoints:</strong> Define the screen widths at which the hero section will adjust or disable itself for responsiveness.</li>
+  <li><strong>Hero Card Width:</strong> Set the width of each Hero Card in pixels or other units. Use this setting to display hero items as Hero Cards or a list. Note that if the width is set to zero, the Hero Cards will expand to the full available width, creating a list layout. This feature requires multiple items to be effective.</li>
+</ol>
+<h3>Custom Token for views header/footer from first row</h3>
+<p>
+    In Views header/footer, if you add a field using <em>Global: Text area</em> or <em>Global: Unfiltered text</em>, there is an option called <strong>"Use replacement tokens from the first row."</strong>
+    The default tokens will not work in this case. Please use the custom tokens created by <strong>VVJH</strong> instead.
+    For example:
+</p>
+<ul>
+    <li>
+        The default token <code>{{ title }}</code> should be replaced with <code>[vvjh:title]</code>.
+    </li>
+    <li>
+        The default token <code>{{ field_image }}</code> should be replaced with <code>[vvjh:field_image]</code>.
+    </li>
+</ul>
+<p>
+    You can append <code>:plain</code> to the token to strip any HTML.<br>
+    Example: <code>[vvjh:title:plain]</code>
+</p>
+<p>
+Note: The [vvjh:*] tokens pull data directly from the rendered View fields.
+Fields using complex rewrites (e.g., Global: Custom text with {{ tokens }}) are not supported by default for token replacement. Please use individual field tokens like [vvjh:title], [vvjh:field_image], etc.
+</p>
+<p><em>v2 note:</em> Token resolution is handled by the shared <code>vvj_core.token_resolver</code> service; the <code>[vvjh:field]</code> and <code>[vvjh:field:plain]</code> syntax is unchanged from v1.</p>
+<h3>Example Usage</h3>
+<ol>
+  <li>Install and enable the <strong>Views Vanilla JavaScript Hero</strong> module.</li>
+  <li>Create or edit a view using the Views module.</li>
+  <li>In the <strong>Format</strong> section, select <em>Vanilla JavaScript Hero</em> from the available display styles.</li>
+  <li>Configure the various options in the <strong>Format Settings</strong> to customize the hero section according to your preferences, including the new <strong>Hero Card Width</strong> feature.</li>
+</ol>
+
+<h3>Additional Information</h3>
+<table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Animation Type</th>
+      <th>Compatible Positions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Fade</strong></td>
+      <td>Middle, Left, Right, Top, Bottom, Top-Left, Top-Right, Bottom-Left, Bottom-Right, Top-Middle, Bottom-Middle</td>
+    </tr>
+    <tr>
+      <td><strong>Zoom</strong></td>
+      <td>Middle, Left, Right, Top, Bottom, Top-Left, Top-Right, Bottom-Left, Bottom-Right</td>
+    </tr>
+    <tr>
+      <td><strong>Slide From Top</strong></td>
+      <td>Top, Bottom, Top-Middle, Bottom-Middle, Top-Left, Top-Right, Bottom-Left, Bottom-Right</td>
+    </tr>
+    <tr>
+      <td><strong>Slide From Right</strong></td>
+      <td>Right, Left, Top-Right, Bottom-Right, Top-Middle, Bottom-Middle</td>
+    </tr>
+    <tr>
+      <td><strong>Slide From Bottom</strong></td>
+      <td>Bottom, Top, Top-Middle, Bottom-Middle, Bottom-Left, Bottom-Right</td>
+    </tr>
+    <tr>
+      <td><strong>Slide From Left</strong></td>
+      <td>Left, Right, Top-Left, Bottom-Left, Top-Middle, Bottom-Middle</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Notes for Users:</strong></p>
+<ul>
+  <li><strong>Fade:</strong> This animation is versatile and works well with almost all positions, including center-aligned (middle), edge-aligned (left, right), and corner positions.</li>
+  <li><strong>Zoom:</strong> Best suited for positions where the content is centrally located (middle, left, right). It may not look ideal when content is at the corners or edges like top-left or bottom-right.</li>
+  <li><strong>Slide From Top:</strong> Works best with positions at the top and bottom (top, bottom, top-middle, bottom-middle). It might not align well with middle or side positions (left, right).</li>
+  <li><strong>Slide From Right:</strong> This animation works well with right and left-aligned content (right, left). It’s also compatible with edge positions like top-right, bottom-right, top-middle, and bottom-middle.</li>
+  <li><strong>Slide From Bottom:</strong> Similar to Slide From Top, this animation is best suited for top and bottom positions but can work with edge or corner positions like bottom-left and bottom-right.</li>
+  <li><strong>Slide From Left:</strong> Works well with left and right-aligned content (left, right) and edge positions (top-left, bottom-left, top-middle, bottom-middle).</li>
+</ul>
+
+<p><strong>Incompatible Combinations:</strong></p>
+<ul>
+  <li><strong>Zoom</strong> may not look ideal when applied to corner positions like top-left or bottom-right because the effect can appear lopsided or unbalanced.</li>
+  <li><strong>Slide From Top</strong> and <strong>Slide From Bottom</strong> may cause unexpected visual results when used with middle or edge-aligned positions (left, right), as the content could slide from an unexpected direction.</li>
+</ul>
+
+<ul>
+  <li><strong>Dependencies</strong>: The module has no dependencies on other contributed modules, making it easy to install and use.</li>
+  <li><strong>Compatibility</strong>: Fully compatible with Drupal 10 and follows Drupal best practices.</li>
+</ul>
+<h3>Installation</h3>
+<ol>
+  <li>Download and install the Views Vanilla JavaScript Hero module from <a href="https://www.drupal.org/project/vvjh">Drupal.org</a>:
+    <pre><code>composer require drupal/vvjh</code></pre>
+  </li>
+  <li>Enable the module through the Drupal admin interface or using Drush:
+    <pre><code>drush en vvjh</code></pre>
+  </li>
+  <li>Clear caches to ensure the new plugin is available:
+    <pre><code>drush cr</code></pre>
+  </li>
+</ol>
+
+<h3>Support and Contributions</h3>
+<p>If you encounter any issues or have suggestions for improvements, please open an issue in the module's issue queue on Drupal.org. Contributions are always welcome and appreciated!</p>
+<h3>Hero - Developer & Site Builder Tips:</h3>
+<ul>
+  <li>Every view created with this plugin has a CSS class <code>vvj-hero</code> placed alongside <code>js-view-dom-id</code>.</li>
+  <li>You must choose "Row Style" as the format, with at least two fields.</li>
+  <li>The first field must be an image. Under the formatter, it could be an image or responsive image; you cannot use a URL to an image. It can be clickable.</li>
+  <li>All other fields will be grouped for the hero overlay text.</li>
+  <li>The hero will collapse into a regular card on small devices.</li>
+</ul>
+<div class="module-notice">
+  <h3>Module Limitation Notice: Grouping Field Feature</h3>
+  <p>
+    Please note that the current version of this module does not support the
+    <strong>Grouping Field</strong> feature available in Drupal Views. The
+    "Grouping Field" option allows you to group records by a specified field,
+    but this functionality is not compatible with the module's current implementation.
+  </p>
+  <p>
+    We recommend avoiding the use of this feature with this module to ensure
+    proper functionality and display of your Views.
+  </p>
+</div>
+
+
+    <p><a class="toc-anchor" href="#" title="back to top ☝️ - Permalink">back to top ☝️</a></p>
+
+    <p><a href="https://alaahaddad.com" title="Alaa Haddad" target="_blank"><img src="/files/we-can-drupalit-light.png" alt="Alaa Haddad"></a></p>
+    <h4>Developed & Designed By: <strong><a href="https://www.alaahaddad.com/node/57" title="Alaa Haddad - Drupal Developer" target="_blank">Alaa Haddad</a></strong></h4>
+    <hr>
+
+
+<div class="note-tip">
+
+<p><strong>A Personal Thank You for Your Support</strong></p>
+<p>Every project you see here, including this one, reflects countless hours of work driven by my passion for making Drupal better for everyone. Your support truly makes a difference, and there are a few simple ways you can help these projects grow and reach others who might benefit:</p>
+<ul>
+   <li><strong>Use & Share Feedback:</strong> Have you found this project (or any of my other work) helpful? Let me know what worked well or how it could be improved. Real user input drives better tools for the entire community.</li>
+   <li><strong>Click "Like" on Drupal.org:</strong> It may seem small, but liking this project on Drupal.org helps others discover and trust these tools.</li> <li><strong>Spread the Word:</strong> Share these projects on social media, Slack groups, or anywhere Drupal folks connect. Your word of mouth helps these tools find the people who need them.</li>
+   <li><strong>Explore More of My Work:</strong> Check out my other projects on Drupal.org to see what else might support your workflow or inspire your next build.</li>
+</ul>
+
+<p><a href="https://www.drupal.org/project/d8w3css" rel="nofollow" target="_blank" title="W3CSS Theme by Alaa Haddad at Flash Web Center, LLC for Drupal">W3CSS Theme (d8w3css)</a> - <a href="https://www.drupal.org/project/solo" rel="nofollow" target="_blank" title="Solo Theme by Alaa Haddad at Flash Web Center, LLC for Drupal">Solo</a> - <a href="https://www.drupal.org/project/w3css_paragraphs" rel="nofollow" target="_blank" title="W3CSS Paragraphs Module by Alaa Haddad at Flash Web Center, LLC for Drupal">W3CSS Paragraphs</a> - <a href="https://www.drupal.org/project/paragraphs_bundles" rel="nofollow" target="_blank" title="Paragraphs Bundles Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Paragraphs Bundles</a> - <a href="https://www.drupal.org/project/amun" rel="nofollow" target="_blank" title="Amun Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Amun</a> - <a href="https://www.drupal.org/project/amunet" rel="nofollow" target="_blank" title="Amunet Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Amunet</a> - <a href="https://www.drupal.org/project/anhur" rel="nofollow" target="_blank" title="Anhur Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Anhur</a> - <a href="https://www.drupal.org/project/acquia_purge_varnish" rel="nofollow" target="_blank" title="Acquia Purge Varnish Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Acquia Purge Varnish</a> - <a href="https://www.drupal.org/project/cloudflare_purge" rel="nofollow" target="_blank" title="Cloudflare Purge Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Cloudflare Purge</a> - <a href="https://www.drupal.org/project/reference_blocked_users" rel="nofollow" target="_blank" title="Reference Blocked Users Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Reference Blocked Users</a> - <a href="https://www.drupal.org/project/solo_copy_blocks" rel="nofollow" target="_blank" title="Solo Copy Blocks Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Solo Copy Blocks</a> - <a href="https://www.drupal.org/project/solo_utilities" rel="nofollow" target="_blank" title="Solo Utilities Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Solo Utilities</a> - <a href="https://www.drupal.org/project/pb_import" rel="nofollow" target="_blank" title="PB Import Module by Alaa Haddad at Flash Web Center, LLC for Drupal">PB Import</a> - <a href="https://www.drupal.org/project/vvja" rel="nofollow" target="_blank" title="VVJA Accordion Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJA - Accordion</a> - <a href="https://www.drupal.org/project/vvjc" rel="nofollow" target="_blank" title="VVJC 3D Carousel Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJC - 3D Carousel</a> - <a href="https://www.drupal.org/project/vvjb" rel="nofollow" target="_blank" title="VVJB Basic Carousel Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJB - Basic Carousel</a> - <a href="https://www.drupal.org/project/vvjf" rel="nofollow" target="_blank" title="VVJF 3D FlipBox Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJF - 3D FlipBox</a> - <a href="https://www.drupal.org/project/vvjh" rel="nofollow" target="_blank" title="VVJH Hero Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJH - Hero</a> - <a href="https://www.drupal.org/project/vvjl" rel="nofollow" target="_blank" title="VVJL Lightbox Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJL - Lightbox</a> - <a href="https://www.drupal.org/project/vvjp" rel="nofollow" target="_blank" title="VVJP Parallax Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJP - Parallax</a> - <a href="https://www.drupal.org/project/vvjr" rel="nofollow" target="_blank" title="VVJR Reveal Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJR - Reveal</a> - <a href="https://www.drupal.org/project/vvjs" rel="nofollow" target="_blank" title="VVJS Slideshow Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJS - Slideshow</a> - <a href="https://www.drupal.org/project/vvjt" rel="nofollow" target="_blank" title="VVJT Tabs Module by Alaa Haddad at Flash Web Center, LLC for Drupal">VVJT - Tabs</a> - <a href="https://www.drupal.org/project/module_matrix" rel="nofollow" target="_blank" title="Module Matrix by Alaa Haddad at Flash Web Center, LLC for Drupal">Module Matrix</a> - <a href="https://www.drupal.org/project/selectify" rel="nofollow" target="_blank" title="Selectify Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Selectify</a> - <a href="https://www.drupal.org/project/utilikit" rel="nofollow" target="_blank" title="Utilikit Module by Alaa Haddad at Flash Web Center, LLC for Drupal">Utilikit</a></p>
+
+<p>If you have any questions, ideas, or feedback about my Drupal.org projects, I’d love to hear from you! To keep things open and helpful for the entire community, I encourage you to post directly in the project's issue queue on Drupal.org. This way, your questions and the answers can benefit others who may have the same needs.</p>
+<p>At the end of the day, my goal is to make Drupal easier and more enjoyable for everyone, especially small businesses and site builders who want to create professional sites without extra hassle. Together, we can build something even better. Thank you for your support, and for being part of this journey!</p>
+
+</div>

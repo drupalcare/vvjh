@@ -29,6 +29,20 @@ Behavior runs in a `<vvjh-hero>` custom element extending `VvjElementBase`.
   with *Use replacement tokens from the first row*
 - **Drupal admin help** — `/admin/help/vvjh`
 
+## Token Support in Views Text Areas
+
+In Views headers, footers, or empty text with *Use replacement tokens from the
+first row*, default Twig tokens (`{{ title }}`) do not work. Use VVJH tokens
+instead:
+
+- `{{ title }}` → `[vvjh:title]`
+- `{{ field_image }}` → `[vvjh:field_image]`
+- Append `:plain` for plain text: `[vvjh:title:plain]`
+
+v2 resolves tokens through the shared `vvj_core.token_resolver` service; syntax
+is unchanged from v1. Tokens read from the **first row** of rendered View
+fields. Complex field rewrites are not supported.
+
 ## Installation
 
 ```bash
