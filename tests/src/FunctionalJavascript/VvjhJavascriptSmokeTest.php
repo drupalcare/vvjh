@@ -6,12 +6,14 @@ namespace Drupal\Tests\vvjh\FunctionalJavascript;
 
 use Drupal\Tests\vvj_core\FunctionalJavascript\VvjPatternJavascriptTestBase;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Browser smoke test: the VVJH example view renders a `<vvjh-hero>` element.
  */
 #[Group('vvjh')]
 #[Group('vvj_javascript')]
+#[RunTestsInSeparateProcesses]
 final class VvjhJavascriptSmokeTest extends VvjPatternJavascriptTestBase {
 
   /**
