@@ -10,8 +10,6 @@
 // phpcs:disable Squiz.WhiteSpace.OperatorSpacing
 
 ((Drupal, once) => {
-  'use strict';
-
   Drupal.behaviors.VVJHero = {
     attach(context) {
       once('vvjh-hero-marker', 'vvjh-hero', context);

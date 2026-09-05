@@ -19,25 +19,27 @@
 // phpcs:disable Squiz.WhiteSpace.OperatorSpacing
 
 ((Drupal) => {
-  'use strict';
-
   const { ElementBase } = Drupal.Vvj;
 
   class VvjhHeroElement extends ElementBase {
-
     static get patternSlug() {
- return 'vvjh'; }
+      return 'vvjh';
+    }
 
     onHydrate() {
       this._wrappers = this.querySelectorAll('.hero-wrapper');
-      if (!this._wrappers.length) { return;
+      if (!this._wrappers.length) {
+        return;
       }
 
       const breakpoint = parseInt(this.getAttribute('data-breakpoints'), 10);
-      this._breakpoint = Number.isFinite(breakpoint) && breakpoint > 0 ? breakpoint : 576;
+      this._breakpoint =
+        Number.isFinite(breakpoint) && breakpoint > 0 ? breakpoint : 576;
 
       this._toggleActive();
-      window.addEventListener('resize', () => this._toggleActive(), { signal: this.signal });
+      window.addEventListener('resize', () => this._toggleActive(), {
+        signal: this.signal,
+      });
     }
 
     _toggleActive() {
@@ -46,11 +48,9 @@
         wrapper.classList.toggle('active', isActive);
       });
     }
-
   }
 
   if (!customElements.get('vvjh-hero')) {
     customElements.define('vvjh-hero', VvjhHeroElement);
   }
-
 })(Drupal);

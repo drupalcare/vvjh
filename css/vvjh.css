@@ -8,14 +8,14 @@
  */
 .vvj-hero .visually-hidden {
   position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   width: 1px;
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
   white-space: nowrap;
+  border: 0;
 }
 
 .vvj-hero,
@@ -25,9 +25,9 @@
 
 .vvj-hero,
 .vvj-hero .view-content {
+  display: block !important;
   width: 100%;
   min-width: 100%;
-  display: block !important;
 }
 
 .vvjh,
@@ -37,11 +37,11 @@
 }
 
 .vvjh .vvjh-inner {
-  margin: 0 auto;
   display: block;
   overflow: hidden;
-  background-color: transparent;
   width: 100%;
+  margin: 0 auto;
+  background-color: transparent;
 }
 
 .vvjh .hero-wrapper {
@@ -50,15 +50,15 @@
 }
 
 .vvjh .hero-wrapper-inner {
+  display: block;
+  overflow: hidden;
   max-width: calc(var(--max-width) * 1px);
   min-height: var(--min-height);
   margin: 0 auto;
-  display: block;
-  overflow: hidden;
   background-color: transparent;
 }
 
 .vvj-hero .hero-content {
-  background: var(--bg-hero-color);
   max-width: calc(var(--max-content-width) * 1%);
+  background: var(--bg-hero-color);
 }
