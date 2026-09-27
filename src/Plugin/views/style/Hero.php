@@ -29,6 +29,25 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class Hero extends VvjStylePluginBase {
 
   /**
+   * {@inheritdoc}
+   *
+   * In vvjh 1.0, `min_height` was a bare number, rendered as
+   * `{{ min_height }}vw`. From late 1.x it is `{value, unit}`, and v2 treats a
+   * bare number as missing and falls back to its default height, losing the
+   * editor's value. Convert it with the unit 1.0 always used.
+   */
+  public static function upgradeLegacyOptions(array $options): array {
+    $min_height = $options['min_height'] ?? NULL;
+    if (is_scalar($min_height) && is_numeric($min_height)) {
+      $options['min_height'] = [
+        'value' => (int) $min_height,
+        'unit' => VvjhConstants::UNIT_VW,
+      ];
+    }
+    return $options;
+  }
+
+  /**
    * Field type lookups for validate() (first field must be an image field).
    */
   protected EntityFieldManagerInterface $entityFieldManager;

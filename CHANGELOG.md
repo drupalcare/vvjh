@@ -9,6 +9,9 @@ name, option key, plugin ID, theme hook, JS behavior key from 1.x.
 
 ### Fixed
 
+- Update 10002 converts v1 views to the v2 option shape. A 1.0-style
+  `min_height` stored as a bare number becomes `{value, unit: vw}`; before
+  this, v2 ignored it and rendered the fallback height.
 - Removed the phantom "Active on all screens" (`all`) option from the Hero
   breakpoint select — a PHP array-union (`+`) bug discarded the intended 5-entry
   list and leaked the base registry's options; v1 offered exactly
