@@ -110,7 +110,7 @@ final class VvjhLegacyOptionsUpgradeTest extends KernelTestBase {
    * @param string $id
    *   View ID.
    *
-   * @return array<string, mixed>
+   * @return array<mixed>
    *   The options.
    */
   private function optionsOf(string $id): array {
