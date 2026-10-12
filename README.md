@@ -20,14 +20,14 @@ Behavior runs in a `<vvjh-hero>` custom element extending `VvjElementBase`.
 - Hex + opacity → rgba overlay background
 - Five animation easing curves: ease / linear / ease-in / ease-out / ease-in-out
 - Configurable hero animation speed (0.1 – 2.0 s)
-- 5 responsive breakpoints (576 / 768 / 992 / 1200 / 1400 px) — hero animation
+- 5 responsive breakpoints (576 / 768 / 992 / 1200 / 1400 px). Hero animation
   activates above the breakpoint
 - ARIA `role="region"`, labeled groups per row, accessible image and content
   overlays
 - Lazy IntersectionObserver hydration; AbortController-tracked listeners
-- **Views tokens** — `[vvjh:field]` / `[vvjh:field:plain]` in Views text areas
+- **Views tokens**: `[vvjh:field]` / `[vvjh:field:plain]` in Views text areas
   with *Use replacement tokens from the first row*
-- **Drupal admin help** — `/admin/help/vvjh`
+- **Drupal admin help**: `/admin/help/vvjh`
 
 ## Token Support in Views Text Areas
 
@@ -55,7 +55,7 @@ drush en vvjh
 1. Create or edit a View.
 2. Set **Format** to *Views Vanilla JavaScript Hero*.
 3. Set **Show** to *Fields*.
-4. The first field MUST be an image — it becomes the hero background.
+4. The first field MUST be an image. It becomes the hero background.
 5. Remaining fields render as the hero content overlay.
 6. Configure layout / position / animation / styling / responsive in the format
    settings.
@@ -81,7 +81,7 @@ Outer rendered tag changed from `<div>` to `<vvjh-hero>`. Theme selectors
 targeting `.vvjh` keep matching.
 
 The vvj_core foundation module ships a shared `safe_html` Twig filter, so v2
-drops the per-module `Drupal\vvjh\Twig\VVJHTwigExtension` — templates that use
+drops the per-module `Drupal\vvjh\Twig\VVJHTwigExtension`: templates that use
 `|safe_html` keep working unchanged.
 
 ## Running the tests
@@ -101,10 +101,10 @@ export SIMPLETEST_DB="mysql://user:pass@localhost/dbname"
 ../vendor/bin/phpunit -c core modules/contrib/vvjh/tests/src/Kernel
 ```
 
-The **Functional** and **FunctionalJavascript** suites additionally need
+The **Functional** and **FunctionalJavascript** suites also need
 `SIMPLETEST_BASE_URL` pointing at a running web server, and the JavaScript ones
 need chromedriver. Without those they error rather than fail, and the errors
-name missing infrastructure rather than anything about this module — so don't
+name missing infrastructure rather than anything about this module, so don't
 read them as test failures. The drupal.org pipeline provides both.
 
 ## License
