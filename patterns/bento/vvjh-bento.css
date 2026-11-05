@@ -1,0 +1,49 @@
+/**
+ * @file
+ * Pattern Bento: four hero cards in a bento grid (the first 2x2, the fourth
+ * two wide); cards zoom in one after another; the summary opens on hover or
+ * focus. The words stay on the photo at every width.
+ */
+
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvjh-inner { display: grid; gap: 14px; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper { display: grid; position: relative; min-height: 17rem; overflow: hidden; isolation: isolate; border-radius: var(--vvj-radius); background: var(--vvj-stage-bg); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper-inner { position: relative; height: 100%; max-width: none; margin: 0; padding: 0; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-image { position: absolute; inset: 0; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-image img { transition: transform 1s var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper-inner::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.55) 45%, rgb(0 0 0 / 0) 75%); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-content { position: absolute; z-index: 2; inset: auto 1.25rem 1.25rem; width: auto; margin: 0; padding: 0; color: var(--vvj-stage-color); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-kicker { font-size: 0.75rem; color: var(--vvj-stage-muted); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-title { margin: 0.3rem 0 0; font-size: clamp(1.25rem, 1.9vw, 1.6rem); font-weight: 700; line-height: 1.15; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-summary { max-width: 44ch; max-height: 0; overflow: hidden; opacity: 0; color: var(--vvj-stage-muted); transition: max-height 0.5s var(--vvj-ease-out), opacity 0.4s, padding 0.5s var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:is(:hover, :focus-within) .vvj-summary,
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:first-child .vvj-summary { max-height: 12rem; padding: 0.4rem 0 0; opacity: 1; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:is(:hover, :focus-within) .hero-image img { transform: scale(1.06); }
+@media (hover: none) {
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-summary { max-height: 12rem; padding: 0.4rem 0 0; opacity: 1; }
+}
+
+/* Orbit link: a ring with the arrow; on hover it fills and turns. */
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-link { margin: 0.6rem 0 0; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-link a { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 44px; font-weight: 650; color: var(--vvj-stage-color); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-link a::after { width: 44px; height: 44px; -webkit-mask-image: var(--vvjh-icon-orbit); mask-image: var(--vvjh-icon-orbit); transition: transform 0.5s var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-link a:is(:hover, :focus-visible)::after { -webkit-mask-image: var(--vvjh-icon-disc); mask-image: var(--vvjh-icon-disc); transform: rotate(-45deg); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-link a:active::after { transform: rotate(-45deg) scale(0.9); }
+
+@media (min-width: 48rem) {
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvjh-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(17rem, auto); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(1),
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(4) { grid-column: span 2; }
+  /* Stagger the module's one-shot entrance (vvjh opens every card at once). */
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(2) :is(.hero-content, .hero-image) { transition-delay: 0.09s; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(3) :is(.hero-content, .hero-image) { transition-delay: 0.18s; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(4) :is(.hero-content, .hero-image) { transition-delay: 0.27s; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento[data-vvjh-ready] .hero-image { opacity: 0; transform: scale(1.05); transition: opacity 0.9s var(--vvj-ease-out), transform 1.2s var(--vvj-ease-out); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento[data-vvjh-ready] .hero-wrapper.active .hero-image { opacity: 1; transform: none; }
+}
+@media (min-width: 64rem) {
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvjh-inner { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(16.25rem, auto); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(4) { grid-column: 3 / 5; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(1) .vvj-title { font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.02em; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper:nth-child(1) .hero-content { inset: auto 2rem 2rem; }
+}

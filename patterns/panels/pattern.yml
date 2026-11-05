@@ -1,0 +1,22 @@
+label: 'Panels'
+description: 'A row of vertical strips: the hovered or focused strip opens wide, its photo regains colour and its words rise in.'
+weight: 2
+options:
+  overlay_position: 'd-bottom-left'
+  hero_style: 'a-left'
+  hero_speed: 0.7
+  animation_easing: 'ease-in-out'
+  overlay_bg_color: '#000000'
+  overlay_bg_opacity: 0.0
+  available_breakpoints: '768'
+  min_height:
+    value: 34
+    unit: 'rem'
+  max_content_width: 100
+  max_width: 1400
+  hero_item_width: 0
+  enable_css: false
+features: []
+needs:
+  - 'Row style Fields. First field the image (style vvj_landscape_1200), then title (h2.vvj-title), summary (p.vvj-summary), link (p.vvj-link).'
+  - 'Three to five items.'

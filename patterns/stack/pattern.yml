@@ -1,0 +1,22 @@
+label: 'Stack'
+description: 'Split cards, photo and words, that stick and pile up as the page scrolls; the card below shrinks and dims.'
+weight: 3
+options:
+  overlay_position: 'd-right'
+  hero_style: 'a-right'
+  hero_speed: 0.9
+  animation_easing: 'ease-out'
+  overlay_bg_color: '#000000'
+  overlay_bg_opacity: 0.0
+  available_breakpoints: '768'
+  min_height:
+    value: 32
+    unit: 'rem'
+  max_content_width: 42
+  max_width: 1200
+  hero_item_width: 0
+  enable_css: false
+features: []
+needs:
+  - 'Row style Fields. First field the image (style vvj_landscape_1200), then title (h2.vvj-title), summary (p.vvj-summary), link (p.vvj-link).'
+  - 'Two to five items.'

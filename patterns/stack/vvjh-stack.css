@@ -1,0 +1,46 @@
+/**
+ * @file
+ * Pattern Stack: split cards (photo 58 %, words 42 %) that stick and pile
+ * up; the card below shrinks and dims while the next settles (scroll-driven
+ * where supported, a plain sticky stack elsewhere). CSS only.
+ */
+
+/* Sticky cards need an ancestor that does not clip (vvjh.css hides overflow). */
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner { --vvjh-n: 3; display: grid; gap: clamp(1.5rem, 8vh, 5rem); overflow: visible; counter-reset: vvjh-stack vvjh-total var(--vvjh-n); view-timeline: --vvjh-stack block; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(2):last-child) { --vvjh-n: 2; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(4):last-child) { --vvjh-n: 4; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(5):last-child) { --vvjh-n: 5; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper { --vvjh-i: 1; counter-increment: vvjh-stack; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper:nth-child(2) { --vvjh-i: 2; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper:nth-child(3) { --vvjh-i: 3; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper:nth-child(4) { --vvjh-i: 4; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper:nth-child(5) { --vvjh-i: 5; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper-inner { display: grid; max-width: none; padding: 0; overflow: hidden; border: 1px solid var(--vvj-line); border-radius: var(--vvj-radius); background: var(--vvj-raised); box-shadow: 0 28px 60px -34px rgb(0 0 0 / 0.45); transform-origin: 50% 0; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-image img { aspect-ratio: 4 / 3; height: auto; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; padding: clamp(1.25rem, 4vw, 3.25rem); color: var(--vvj-ink); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content::before { content: counter(vvjh-stack, decimal-leading-zero) " / " counter(vvjh-total, decimal-leading-zero); font: 650 0.8125rem/1 ui-monospace, menlo, consolas, monospace; letter-spacing: 0.12em; color: var(--vvj-muted); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-title { font-size: clamp(1.6rem, 3.2vw, 2.75rem); font-weight: 750; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-summary { max-width: 38ch; font-size: 1.0625rem; color: var(--vvj-muted); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link { margin: 0.5rem 0 0; }
+
+/* Split button: label, a thin line, and an arrow segment that inverts on hover. */
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a { --vvjh-stack-seg: transparent; display: inline-flex; align-items: center; gap: 1.1rem; min-height: 48px; padding-inline: 1.1rem 0; overflow: hidden; border-radius: 12px; font-weight: 650; color: var(--vvj-surface); background: linear-gradient(var(--vvjh-stack-seg), var(--vvjh-stack-seg)) right top / 48px 100% no-repeat, linear-gradient(currentColor, currentColor) right 48px top / 1px 100% no-repeat, var(--vvj-ink); transition: transform 0.15s; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a::after { align-self: stretch; width: 48px; -webkit-mask-size: 0.9rem; mask-size: 0.9rem; transition: -webkit-mask-position 0.35s var(--vvj-ease-out), mask-position 0.35s var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:is(:hover, :focus-visible) { --vvjh-stack-seg: var(--vvj-surface); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:is(:hover, :focus-visible)::after { background: var(--vvj-ink); -webkit-mask-position: calc(50% + 3px) center; mask-position: calc(50% + 3px) center; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:active { transform: translateY(1px); }
+
+@media (min-width: 48rem) {
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper { position: sticky; inset: calc(1.5rem + (var(--vvjh-i) - 1) * 14px) auto auto; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper-inner { grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); min-height: var(--min-height); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-image { position: relative; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-image img { aspect-ratio: auto; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content { position: relative; inset: auto; max-width: none; justify-content: center; transition-property: opacity, transform; }
+}
+
+@keyframes vvjh-stack-recede { to { transform: scale(0.9); filter: brightness(0.72); } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 48rem) {
+    .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper:not(:last-child) .hero-wrapper-inner { animation: vvjh-stack-recede linear both; animation-timeline: --vvjh-stack; animation-range: exit-crossing calc((var(--vvjh-i) - 1) / var(--vvjh-n) * 100%) exit-crossing calc(var(--vvjh-i) / var(--vvjh-n) * 100%); }
+  }
+}

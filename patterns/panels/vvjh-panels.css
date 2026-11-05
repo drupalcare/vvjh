@@ -1,0 +1,48 @@
+/**
+ * @file
+ * Pattern Panels: the rows as vertical strips; the hovered or focused strip
+ * (the first when none is) opens four times wider. CSS only.
+ */
+
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner { display: grid; gap: 10px; counter-reset: vvjh-panel; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper { position: relative; isolation: isolate; counter-increment: vvjh-panel; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper::before { content: counter(vvjh-panel, decimal-leading-zero); position: absolute; z-index: 3; inset-block: 1rem auto; inset-inline: 1rem auto; padding: 0.2rem 0.6rem; border: 1px solid var(--vvj-stage-line); border-radius: 999px; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; color: var(--vvj-stage-color); background: var(--vvj-glass-bg); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-image { overflow: hidden; border-radius: var(--vvj-radius); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-weight: 750; line-height: 1.05; letter-spacing: -0.02em; }
+
+/* Link: the underline draws in, the arrow slides. */
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; font-weight: 650; background: linear-gradient(currentColor, currentColor) 0 calc(100% - 8px) / 0% 2px no-repeat; transition: background-size 0.35s var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a::after { width: 0.9em; height: 0.9em; transition: transform 0.35s var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a:is(:hover, :focus-visible) { background-size: 100% 2px; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a:is(:hover, :focus-visible)::after { transform: translateX(4px); }
+
+/* Phone: a stacked list, every panel open, words under the photo. */
+@media (max-width: 47.99rem) {
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-image { aspect-ratio: 16 / 10; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-content { padding: 0.9rem 0.25rem 1.25rem; color: var(--vvj-ink); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-size: 1.6rem; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-summary { margin: 0.35rem 0 0; color: var(--vvj-muted); }
+}
+
+@media (min-width: 48rem) {
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner { display: flex; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper { flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--vvj-radius); cursor: pointer; transition: flex-grow 0.7s var(--vvj-ease-out); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper-inner { position: relative; height: 100%; max-width: none; padding: 0; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-image { position: absolute; inset: 0; border-radius: 0; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-image img { transform: scale(1.08); filter: grayscale(0.45) brightness(0.8); transition: transform 1s var(--vvj-ease-out), filter 0.7s; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper-inner::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.6) 40%, rgb(0 0 0 / 0.5) 70%); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-content { z-index: 2; inset: auto 1.25rem 1.5rem; padding: 0; color: var(--vvj-stage-color); transition-property: opacity, transform; }
+  /* Closed strip: only the title, rotated. */
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-size: 1.5rem; white-space: nowrap; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels :is(.vvj-summary, .vvj-link) { display: none; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper:is(:hover, :focus-within),
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child { flex-grow: 4; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper:is(:hover, :focus-within) .hero-image img,
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child .hero-image img { transform: none; filter: none; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper:is(:hover, :focus-within) .vvj-title,
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child .vvj-title { font-size: clamp(2rem, 3.4vw, 3.25rem); white-space: normal; writing-mode: horizontal-tb; transform: none; animation: vvjh-panels-in 0.55s var(--vvj-ease-out) 0.15s both; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper:is(:hover, :focus-within) :is(.vvj-summary, .vvj-link),
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child :is(.vvj-summary, .vvj-link) { display: block; animation: vvjh-panels-in 0.55s var(--vvj-ease-out) 0.28s both; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-summary { max-width: 40ch; margin: 0.6rem 0 0.4rem; font-size: 1.0625rem; color: var(--vvj-stage-muted); }
+}
+@keyframes vvjh-panels-in { from { opacity: 0; transform: translateY(14px); } }

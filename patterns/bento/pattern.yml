@@ -1,0 +1,22 @@
+label: 'Bento'
+description: 'Four hero cards in a bento grid: the first is large; cards zoom in one after another and open their summary on hover or focus.'
+weight: 1
+options:
+  overlay_position: 'd-bottom-left'
+  hero_style: 'a-zoom'
+  hero_speed: 0.8
+  animation_easing: 'ease-out'
+  overlay_bg_color: '#000000'
+  overlay_bg_opacity: 0.0
+  available_breakpoints: '768'
+  min_height:
+    value: 260
+    unit: 'px'
+  max_content_width: 92
+  max_width: 1200
+  hero_item_width: 0
+  enable_css: false
+features: []
+needs:
+  - 'Row style Fields. First field the image (style vvj_landscape_1200), then kicker (p.vvj-kicker), title (h2.vvj-title), summary (p.vvj-summary), link (p.vvj-link).'
+  - 'Four items (pager: some, 4): the bento spans are drawn for four cards.'

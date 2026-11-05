@@ -44,3 +44,50 @@ vvjh__1400:
   css:
     theme:
       css/vvjh-1400.css: { }
+
+# Patterns. Each depends on vvjh/vvjh so its CSS loads after the module CSS.
+vvjh-pattern-base:
+  css:
+    theme:
+      patterns/vvjh-pattern-base.css: { weight: 205 }
+  js:
+    patterns/vvjh-pattern.js: {}
+  dependencies:
+    - vvjh/vvjh
+    - vvj_patterns/base
+    - vvj_core/element-base
+    - core/drupal
+    - core/once
+
+pattern.aperture:
+  css:
+    theme:
+      patterns/aperture/vvjh-aperture.css: { weight: 210 }
+  js:
+    patterns/aperture/vvjh-aperture.js: {}
+  dependencies:
+    - vvjh/vvjh-pattern-base
+    - vvj_patterns/split-text
+    - core/drupal
+    - core/once
+
+pattern.bento:
+  css:
+    theme:
+      patterns/bento/vvjh-bento.css: { weight: 210 }
+  dependencies:
+    - vvjh/vvjh-pattern-base
+
+pattern.panels:
+  css:
+    theme:
+      patterns/panels/vvjh-panels.css: { weight: 210 }
+  dependencies:
+    - vvjh/vvjh-pattern-base
+
+pattern.stack:
+  css:
+    theme:
+      patterns/stack/vvjh-stack.css: { weight: 210 }
+  dependencies:
+    - vvjh/vvjh-pattern-base

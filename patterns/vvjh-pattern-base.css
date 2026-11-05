@@ -1,0 +1,47 @@
+/**
+ * @file
+ * Shared by every vvjh Pattern: words, titles, images, link icons, motion.
+ *
+ * Colours come only from the --vvj-* tokens (vvj_patterns/base); every
+ * selector starts at the view's own element. Icons are the Material
+ * "arrow_forward" path used in vvjs/svg/vvjs-pattern-next.svg, drawn as a
+ * mask so they take the text colour: a plain arrow, a disc with the arrow cut
+ * out, and a ring with the arrow inside.
+ */
+
+.vvj-pattern.vvjh {
+  --vvjh-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4 16 16'%3E%3Cpath fill-rule='evenodd' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E");
+  --vvjh-icon-disc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-9 -9 42 42'%3E%3Cpath fill-rule='evenodd' d='M12-9a21 21 0 1 0 0 42a21 21 0 1 0 0-42zM12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E");
+  --vvjh-icon-orbit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-9 -9 42 42'%3E%3Cpath fill-rule='evenodd' d='M12-9a21 21 0 1 0 0 42a21 21 0 1 0 0-42zM12-7.6a19.6 19.6 0 1 0 0 39.2a19.6 19.6 0 1 0 0-39.2zM12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E");
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: var(--vvj-ink);
+  font-family: var(--vvj-font-ui);
+}
+.vvj-pattern.vvjh,
+.vvj-pattern.vvjh *,
+.vvj-pattern.vvjh *::before,
+.vvj-pattern.vvjh *::after { box-sizing: border-box; }
+
+/* Theme resets: headings, paragraphs, lists, images. */
+.vvj-pattern.vvjh :is(h1, h2, h3, h4, h5, h6, p) { margin: 0; padding: 0; font-size: inherit; line-height: inherit; color: inherit; hyphens: manual; overflow-wrap: normal; word-break: normal; }
+.vvj-pattern.vvjh :is(ul, ol, li) { list-style: none; margin: 0; padding: 0; }
+.vvj-pattern.vvjh :is(img, svg) { display: block; max-width: 100%; height: auto; }
+
+/* Beats the theme's h1-h6 colour; titles never hyphenate. */
+.vvj-pattern.vvjh .vvj-title { color: inherit; font-family: var(--vvj-font-display); font-weight: 600; letter-spacing: normal; text-transform: none; hyphens: manual; overflow-wrap: normal; word-break: normal; }
+.vvj-pattern.vvjh .vvj-kicker { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.vvj-pattern.vvjh .hero-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Link control: full reset, then the shared shape; each Pattern sets only its own values. */
+.vvj-pattern.vvjh .vvj-link { display: block; min-height: 0; margin: 0; padding: 0; }
+.vvj-pattern.vvjh .vvj-link a { appearance: none; display: inline-flex; align-items: center; gap: 0.6em; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: inherit; font: inherit; font-weight: 600; line-height: 1.2; letter-spacing: normal; text-transform: none; text-decoration: none; text-align: start; width: auto; height: auto; min-width: 0; min-height: 44px; vertical-align: middle; outline: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.vvj-pattern.vvjh .vvj-link a:focus-visible { outline: 3px solid var(--vvj-focus, currentColor); outline-offset: 3px; }
+.vvj-pattern.vvjh .vvj-link a::after { content: ""; display: block; flex: none; margin: 0; padding: 0; background: currentColor; -webkit-mask: var(--vvjh-icon-arrow) center / contain no-repeat; mask: var(--vvjh-icon-arrow) center / contain no-repeat; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vvj-pattern.vvjh *,
+  .vvj-pattern.vvjh *::before,
+  .vvj-pattern.vvjh *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; animation: none !important; }
+}

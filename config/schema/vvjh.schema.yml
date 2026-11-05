@@ -48,3 +48,6 @@ views.style.views_vvjh:
     hero_item_width:
       type: integer
       label: 'Hero card width in pixels'
+    vvj_pattern:
+      type: string
+      label: 'VVJ Pattern'
