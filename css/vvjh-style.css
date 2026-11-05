@@ -14,7 +14,7 @@
   box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
 }
 
-.vvjh .hero-content:hover,
-.vvjh .hero-content:focus {
+:where(.vvjh) .hero-content:hover,
+:where(.vvjh) .hero-content:focus {
   box-shadow: 0 8px 12px rgb(0, 0, 0, 0.15);
 }

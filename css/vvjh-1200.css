@@ -41,7 +41,7 @@
     object-fit: cover;
   }
 
-  .vvjh.br-1200 .hero-wrapper.a-fade .hero-content {
+  :where(.vvjh.br-1200) :where(.hero-wrapper.a-fade) .hero-content {
     opacity: 0;
   }
 

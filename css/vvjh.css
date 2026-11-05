@@ -19,12 +19,12 @@
 }
 
 .vvj-hero,
-.vvj-hero * {
+:where(.vvj-hero) * {
   box-sizing: border-box;
 }
 
 .vvj-hero,
-.vvj-hero .view-content {
+:where(.vvj-hero) .view-content {
   display: block !important;
   width: 100%;
   min-width: 100%;
@@ -44,7 +44,7 @@
   background-color: transparent;
 }
 
-.vvjh .hero-wrapper {
+:where(.vvjh) .hero-wrapper {
   position: relative;
   width: 100%;
 }
@@ -58,7 +58,7 @@
   background-color: transparent;
 }
 
-.vvj-hero .hero-content {
+:where(.vvj-hero) .hero-content {
   max-width: calc(var(--max-content-width) * 1%);
   background: var(--bg-hero-color);
 }

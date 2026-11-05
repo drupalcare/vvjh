@@ -20,14 +20,14 @@
   font-family: var(--vvj-font-ui);
 }
 .vvj-pattern.vvjh,
-.vvj-pattern.vvjh *,
-.vvj-pattern.vvjh *::before,
-.vvj-pattern.vvjh *::after { box-sizing: border-box; }
+:where(.vvj-pattern.vvjh) *,
+:where(.vvj-pattern.vvjh) *::before,
+:where(.vvj-pattern.vvjh) *::after { box-sizing: border-box; }
 
 /* Theme resets: headings, paragraphs, lists, images. */
-.vvj-pattern.vvjh :is(h1, h2, h3, h4, h5, h6, p) { margin: 0; padding: 0; font-size: inherit; line-height: inherit; color: inherit; hyphens: manual; overflow-wrap: normal; word-break: normal; }
-.vvj-pattern.vvjh :is(ul, ol, li) { list-style: none; margin: 0; padding: 0; }
-.vvj-pattern.vvjh :is(img, svg) { display: block; max-width: 100%; height: auto; }
+:where(.vvj-pattern.vvjh) :is(h1, h2, h3, h4, h5, h6, p) { margin: 0; padding: 0; font-size: inherit; line-height: inherit; color: inherit; hyphens: manual; overflow-wrap: normal; word-break: normal; }
+:where(.vvj-pattern.vvjh) :is(ul, ol, li) { list-style: none; margin: 0; padding: 0; }
+:where(.vvj-pattern.vvjh) :is(img, svg) { display: block; max-width: 100%; height: auto; }
 
 /* Beats the theme's h1-h6 colour; titles never hyphenate. */
 .vvj-pattern.vvjh .vvj-title { color: inherit; font-family: var(--vvj-font-display); font-weight: 600; letter-spacing: normal; text-transform: none; hyphens: manual; overflow-wrap: normal; word-break: normal; }
@@ -41,7 +41,7 @@
 .vvj-pattern.vvjh .vvj-link a::after { content: ""; display: block; flex: none; margin: 0; padding: 0; background: currentColor; -webkit-mask: var(--vvjh-icon-arrow) center / contain no-repeat; mask: var(--vvjh-icon-arrow) center / contain no-repeat; }
 
 @media (prefers-reduced-motion: reduce) {
-  .vvj-pattern.vvjh *,
-  .vvj-pattern.vvjh *::before,
-  .vvj-pattern.vvjh *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; animation: none !important; }
+  :where(.vvj-pattern.vvjh) *,
+  :where(.vvj-pattern.vvjh) *::before,
+  :where(.vvj-pattern.vvjh) *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; animation: none !important; }
 }
