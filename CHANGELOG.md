@@ -11,6 +11,7 @@ name, option key, plugin ID, theme hook, JS behavior key from 1.x.
 
 ### Added
 
+- Help page: follows the drupal.org help text standard (translatable About and Uses sections) instead of printing README.md as raw text.
 - Pattern colors: the photo scrims and the Stack shadow are module tokens in `vvjh-pattern-base.css`; new `pattern-bridge-solo` and `pattern-bridge-apex` libraries (`patterns/bridge/`) map them to a Solo or APEX theme. The black-and-white look is unchanged.
 
 ### Fixed
