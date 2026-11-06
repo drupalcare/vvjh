@@ -2,10 +2,10 @@
  * @file
  * Shared by every vvjh Pattern: words, titles, images, link icons, motion.
  *
- * Colours come only from the --vvj-* tokens (vvj_patterns/base); every
+ * Colors come only from the --vvj-* tokens (vvj_patterns/base); every
  * selector starts at the view's own element. Icons are the Material
  * "arrow_forward" path used in vvjs/svg/vvjs-pattern-next.svg, drawn as a
- * mask so they take the text colour: a plain arrow, a disc with the arrow cut
+ * mask so they take the text color: a plain arrow, a disc with the arrow cut
  * out, and a ring with the arrow inside.
  */
 
@@ -58,7 +58,7 @@
   height: auto;
 }
 
-/* Beats the theme's h1-h6 colour; titles never hyphenate. */
+/* Beats the theme's h1-h6 color; titles never hyphenate. */
 .vvj-pattern.vvjh .vvj-title {
   letter-spacing: normal;
   text-transform: none;

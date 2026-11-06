@@ -1,18 +1,18 @@
 /**
  * @file
- * vvjh theme bridge for APEX: maps the module's colour tokens to the theme's region colours.
+ * vvjh theme bridge for APEX: maps the module's color tokens to the theme's region colors.
  *
  * Token mapping ONLY; every element is painted once, in the Pattern CSS. The
  * selector is the module's own token block (0,2,0) and this file loads just
  * after it, so the theme value wins by order. A plain :where() at 0,0,0 would
- * lose to the module's declaration. The Pattern inherits the colours of the
+ * lose to the module's declaration. The Pattern inherits the colors of the
  * region it sits in. Each value falls back to the black-and-white --vvj-*
- * token, so a region that leaves a colour unset still renders. vvjh paints only photo scrims and one card shadow; all of them derive from --vvj-stage-bg, which the vvj_patterns bridge supplies.
+ * token, so a region that leaves a color unset still renders. vvjh paints only photo scrims and one card shadow; all of them derive from --vvj-stage-bg, which the vvj_patterns bridge supplies.
  */
 
-/* APEX extra colours: the owner will name them; none are invented here. */
+/* APEX extra colors: the owner will name them; none are invented here. */
 
-/* Forced colours: the system palette replaces colour, so the card shadow goes. */
+/* Forced colors: the system palette replaces color, so the card shadow goes. */
 @media (forced-colors: active) {
   .vvj-pattern.vvjh {
     --vvjh-stack-shadow: none;
