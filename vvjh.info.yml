@@ -1,6 +1,6 @@
-name: 'Views Vanilla Javascript Hero - VVJH'
+name: 'Views Vanilla JavaScript Hero - VVJH'
 type: module
-description: 'Responsive hero display format for Views.'
+description: 'Displays Views results as a responsive hero.'
 core_version_requirement: ^11.3 || ^12
 package: VVJ
 php: 8.3

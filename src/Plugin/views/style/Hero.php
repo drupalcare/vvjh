@@ -179,14 +179,14 @@ class Hero extends VvjStylePluginBase {
   protected function buildLayoutSection(array &$form): void {
     $form['layout_section'] = [
       '#type' => 'details',
-      '#title' => $this->t('Layout Settings'),
+      '#title' => $this->t('Layout settings'),
       '#open' => TRUE,
       '#weight' => -40,
     ];
 
     $form['layout_section']['max_width'] = [
       '#type' => 'number',
-      '#title' => $this->t('Max Width (px)'),
+      '#title' => $this->t('Max width (px)'),
       '#default_value' => $this->options['max_width'],
       '#description' => $this->t('Defines the maximum width for the main container of the hero content, typically set in pixels. For example, setting this value to 1200px will ensure that the hero content does not exceed this width, regardless of the screen size.'),
       '#step' => 1,
@@ -196,7 +196,7 @@ class Hero extends VvjStylePluginBase {
 
     $form['layout_section']['min_height'] = [
       '#type' => 'fieldset',
-      '#title' => $this->t('Minimum Height'),
+      '#title' => $this->t('Minimum height'),
       '#description' => $this->t("Define the minimum height of the hero container by entering a value and selecting a unit. Choose from the following units:
         <ul>
           <li><strong>Viewport Width (vw):</strong> 1vw is equal to 1 percent of the viewport's width. For example, if the viewport is 1000px wide, 10vw will equal 100px.</li>
@@ -216,7 +216,7 @@ class Hero extends VvjStylePluginBase {
 
     $form['layout_section']['min_height']['value'] = [
       '#type' => 'number',
-      '#title' => $this->t('Height Value'),
+      '#title' => $this->t('Height value'),
       '#default_value' => $min_height['value'] ?? VvjhConstants::DEFAULT_MIN_HEIGHT_VALUE,
       '#description' => $this->t('Enter the numeric value for the minimum height.'),
       '#attributes' => ['style' => 'width: 150px; display: inline-block;'],
@@ -224,7 +224,7 @@ class Hero extends VvjStylePluginBase {
 
     $form['layout_section']['min_height']['unit'] = [
       '#type' => 'select',
-      '#title' => $this->t('Height Unit (vw, vh, px, em, rem)'),
+      '#title' => $this->t('Height unit (vw, vh, px, em, rem)'),
       '#description' => $this->t('Select the unit for the minimum height.'),
       '#default_value' => $min_height['unit'] ?? VvjhConstants::DEFAULT_MIN_HEIGHT_UNIT,
       '#options' => [
@@ -249,7 +249,7 @@ class Hero extends VvjStylePluginBase {
 
     $form['layout_section']['hero_item_width'] = [
       '#type' => 'number',
-      '#title' => $this->t('Hero Card Width (px)'),
+      '#title' => $this->t('Hero card width (px)'),
       '#default_value' => $this->options['hero_item_width'],
       '#description' => $this->t('Set the width of each Hero Card in pixels. Use this setting to display hero items as Hero Cards or a list. If set to zero, each Hero Card will expand to the full available width, creating a list layout. Otherwise, specifying a width will display each item as a Hero Card with the specified width. Note: To use this feature, you must have more than one item.'),
       '#step' => 1,
@@ -267,14 +267,14 @@ class Hero extends VvjStylePluginBase {
   protected function buildPositionSection(array &$form): void {
     $form['position_section'] = [
       '#type' => 'details',
-      '#title' => $this->t('Position Settings'),
+      '#title' => $this->t('Position settings'),
       '#open' => TRUE,
       '#weight' => -30,
     ];
 
     $form['position_section']['overlay_position'] = [
       '#type' => 'select',
-      '#title' => $this->t('Overlay Position'),
+      '#title' => $this->t('Overlay position'),
       '#options' => [
         VvjhConstants::POSITION_MIDDLE => $this->t('Middle'),
         VvjhConstants::POSITION_LEFT => $this->t('Left'),
@@ -303,7 +303,7 @@ class Hero extends VvjStylePluginBase {
   protected function buildAnimationSection(array &$form): void {
     $form['animation_section'] = [
       '#type' => 'details',
-      '#title' => $this->t('Animation Settings'),
+      '#title' => $this->t('Animation settings'),
       '#open' => TRUE,
       '#weight' => -20,
     ];
@@ -320,7 +320,7 @@ class Hero extends VvjStylePluginBase {
 
     $form['animation_section']['hero_speed'] = [
       '#type' => 'number',
-      '#title' => $this->t('Hero Animation Speed'),
+      '#title' => $this->t('Hero animation speed'),
       '#default_value' => $this->options['hero_speed'],
       '#description' => $this->t('Set the speed at which the hero section content animation occurs. Enter a value between 0.1 (fast) and 2 (slow) to control the animation speed.'),
       '#step' => VvjhConstants::HERO_SPEED_STEP,
@@ -331,7 +331,7 @@ class Hero extends VvjStylePluginBase {
 
     $form['animation_section']['animation_easing'] = [
       '#type' => 'select',
-      '#title' => $this->t('Animation Easing'),
+      '#title' => $this->t('Animation easing'),
       '#options' => [
         VvjhConstants::EASING_EASE => $this->t('Ease'),
         VvjhConstants::EASING_LINEAR => $this->t('Linear'),
@@ -354,14 +354,14 @@ class Hero extends VvjStylePluginBase {
   protected function buildStyleSection(array &$form): void {
     $form['style_section'] = [
       '#type' => 'details',
-      '#title' => $this->t('Style Settings'),
+      '#title' => $this->t('Style settings'),
       '#open' => TRUE,
       '#weight' => -10,
     ];
 
     $form['style_section']['overlay_bg_color'] = [
       '#type' => 'color',
-      '#title' => $this->t('Overlay Background Color'),
+      '#title' => $this->t('Overlay background color'),
       '#default_value' => $this->options['overlay_bg_color'],
       '#description' => $this->t('Choose the background color for the overlay that appears behind the content within the hero section. This helps improve the readability of the overlay content.'),
     ];
@@ -370,7 +370,7 @@ class Hero extends VvjStylePluginBase {
     $opacity_string = is_scalar($raw_opacity) ? (string) $raw_opacity : '';
     $form['style_section']['overlay_bg_opacity'] = [
       '#type' => 'range',
-      '#title' => $this->t('Overlay Background Opacity'),
+      '#title' => $this->t('Overlay background opacity'),
       '#default_value' => $this->options['overlay_bg_opacity'],
       '#min' => VvjhConstants::MIN_OPACITY,
       '#max' => VvjhConstants::MAX_OPACITY,
@@ -392,7 +392,7 @@ class Hero extends VvjStylePluginBase {
   protected function buildResponsiveSection(array &$form): void {
     $form['responsive_section'] = [
       '#type' => 'details',
-      '#title' => $this->t('Responsive Settings'),
+      '#title' => $this->t('Responsive settings'),
       '#open' => FALSE,
       '#weight' => 0,
     ];
@@ -563,7 +563,7 @@ class Hero extends VvjStylePluginBase {
       && $field_storage_definitions[$field_name]->getType() === 'image';
 
     if (!$is_image) {
-      $errors[] = (string) $this->t('Views Hero requires the first field to be an Image field. Please add an image field as the first field in your Fields configuration.');
+      $errors[] = (string) $this->t('Views Hero requires the first field to be an Image field. Add an image field as the first field in your Fields configuration.');
     }
 
     return $errors;

@@ -41,6 +41,7 @@ name, option key, plugin ID, theme hook, JS behavior key from 1.x.
 
 ### Changed
 
+- Text follows the drupal.org standards: the module description begins with a verb, "JavaScript" is spelled as the language spells it, settings titles are in sentence case, and the README has its project and issue queue links.
 - Plugin extends `VvjStylePluginBase`. Implements four small subclass hooks
   (`getModuleSlug`, `getCustomElementTag`, `definePatternOptions`,
   `buildPatternSections`); standard sections (warning message, advanced, token

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * VVJH — Views Vanilla Javascript Hero bootstrap.
+ * VVJH — Views Vanilla JavaScript Hero bootstrap.
  *
  * Hooks live as OOP `#[Hook]` attribute classes under `src/Hook/`.
  *
