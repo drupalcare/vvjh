@@ -26,12 +26,12 @@
       if (trigger !== 'unload') {
         return;
       }
-      once.remove('vvj-pattern-vvjh', '.vvj-pattern.vvjh', context).forEach(
-        (root) => {
+      once
+        .remove('vvj-pattern-vvjh', '.vvj-pattern.vvjh', context)
+        .forEach((root) => {
           controllers.get(root)?.abort();
           controllers.delete(root);
-        },
-      );
+        });
     },
   };
 })(Drupal, once);

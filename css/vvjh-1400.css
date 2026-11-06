@@ -7,7 +7,7 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 @media (min-width: 87.5rem) {
-  .vvjh.br-1400.vvjh-multiple.max-w .vvjh-inner {
+  .vvjh.br-1400:where(:not(.vvj-pattern)).vvjh-multiple.max-w .vvjh-inner {
     --grid-gap: 1rem;
 
     display: grid;
@@ -15,7 +15,7 @@
     gap: var(--grid-gap);
   }
 
-  .vvjh.br-1400 .hero-wrapper-inner {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper-inner {
     display: flex;
     overflow: hidden;
     align-items: center;
@@ -24,7 +24,7 @@
     background-color: transparent;
   }
 
-  .vvjh.br-1400 .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content {
     position: relative;
     margin: 0;
     padding: 1rem;
@@ -32,7 +32,7 @@
     opacity: 0;
   }
 
-  .vvjh.br-1400 .hero-wrapper .hero-image img {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper .hero-image img {
     position: absolute;
     top: 0;
     inset-inline-start: 0;
@@ -41,113 +41,113 @@
     object-fit: cover;
   }
 
-  :where(.vvjh.br-1400) :where(.hero-wrapper.a-fade) .hero-content {
+  :where(.vvjh.br-1400:where(:not(.vvj-pattern))) :where(.hero-wrapper.a-fade) .hero-content {
     opacity: 0;
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-zoom .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-zoom .hero-content {
     transform: scale(0);
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-top .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-top .hero-content {
     transform: translateY(-100%);
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-right .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-right .hero-content {
     transform: translateX(100%);
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-bottom .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-bottom .hero-content {
     transform: translateY(100%);
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-left .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-left .hero-content {
     transform: translateX(-100%);
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-fade.active .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-fade.active .hero-content {
     opacity: 1;
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-zoom.active .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-zoom.active .hero-content {
     transform: scale(1);
     opacity: 1;
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-top.active .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-top.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-right.active .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-right.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-bottom.active .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-bottom.active .hero-content {
     transform: translateY(0);
     opacity: 1;
   }
 
-  .vvjh.br-1400 .hero-wrapper.a-left.active .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper.a-left.active .hero-content {
     transform: translateX(0);
     opacity: 1;
   }
 
   /* Display Container */
-  .vvjh.br-1400 .hero-content.d-top-left {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-top-left {
     position: absolute;
     inset-inline-start: 16px;
     top: 16px;
   }
 
-  .vvjh.br-1400 .hero-content.d-top-right {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-top-right {
     position: absolute;
     inset-inline-end: 16px;
     top: 16px;
   }
 
-  .vvjh.br-1400 .hero-content.d-bottom-left {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-bottom-left {
     position: absolute;
     inset-inline-start: 16px;
     bottom: 16px;
   }
 
-  .vvjh.br-1400 .hero-content.d-bottom-right {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-bottom-right {
     position: absolute;
     inset-inline-end: 16px;
     bottom: 16px;
   }
 
-  .vvjh.br-1400 .hero-content.d-middle {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-middle {
     position: absolute;
     top: 50%;
     inset-inline-start: 50%;
     transform: translate(-50%, -50%);
   }
 
-  .vvjh.br-1400 .hero-content.d-left {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-left {
     position: absolute;
     top: 50%;
     inset-inline-start: 16px;
     transform: translate(-0%, -50%);
   }
 
-  .vvjh.br-1400 .hero-content.d-right {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-right {
     position: absolute;
     top: 50%;
     inset-inline-end: 16px;
     transform: translate(0%, -50%);
   }
 
-  .vvjh.br-1400 .hero-content.d-top-middle {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-top-middle {
     position: absolute;
     inset-inline-start: 50%;
     top: 16px;
     transform: translate(-50%, 0%);
   }
 
-  .vvjh.br-1400 .hero-content.d-bottom-middle {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content.d-bottom-middle {
     position: absolute;
     inset-inline-start: 50%;
     bottom: 16px;
@@ -156,7 +156,7 @@
 }
 
 @media (max-width: 87.49875rem) {
-  .vvjh.br-1400.vvjh-multiple.max-w .vvjh-inner {
+  .vvjh.br-1400:where(:not(.vvj-pattern)).vvjh-multiple.max-w .vvjh-inner {
     --grid-gap: 1rem;
 
     display: grid;
@@ -164,13 +164,13 @@
     gap: var(--grid-gap);
   }
 
-  .vvjh.br-1400 .hero-wrapper-inner {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-wrapper-inner {
     width: 100%;
     min-height: initial !important;
     margin-block-end: 1rem;
   }
 
-  .vvjh.br-1400 .hero-content {
+  .vvjh.br-1400:where(:not(.vvj-pattern)) .hero-content {
     width: 100%;
     max-width: 100% !important;
     margin-block-start: 1rem;

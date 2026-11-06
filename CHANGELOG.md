@@ -7,8 +7,16 @@ foundation, ships `<vvjh-hero>` custom element extending `VvjElementBase`,
 AbortController-tracked listeners, while preserving every CSS rule, library
 name, option key, plugin ID, theme hook, JS behavior key from 1.x.
 
+### Added
+
+- Pattern colours: the photo scrims and the Stack shadow are module tokens in `vvjh-pattern-base.css`; new `pattern-bridge-solo` and `pattern-bridge-apex` libraries (`patterns/bridge/`) map them to a Solo or APEX theme. The black-and-white look is unchanged.
+
 ### Fixed
 
+- Patterns: the breakpoint files (`css/vvjh-NNN.css`) no longer match Pattern markup; the placement, entrance and narrow resets Patterns used from them now live in `vvjh-pattern-base.css` and follow the Pattern's container, so Panels in a narrow column on a wide screen shows its phone layout with readable words.
+- Accessibility: Aperture, Bento and Panels put a soft dark scrim under the words that sit on a photo, so the text keeps its contrast on a light photo.
+- Accessibility: the hero no longer adds four empty tab stops per item or `aria-labelledby` references to ids that do not exist (the `role="img"` wrapper hid the real image alt). Panels: a closed strip's summary is hidden visually instead of with `display: none`, so screen readers reach it; focusing the link opens the strip.
+- Panels: an opening panel no longer squeezes its words; they keep the open width and the title turns from upright to level. Stack: the photo fills the whole card height (the module centered grid items, leaving the top half empty).
 - Update 10002 converts v1 views to the v2 option shape. A 1.0-style
   `min_height` stored as a bare number becomes `{value, unit: vw}`; before
   this, v2 ignored it and rendered the fallback height.
@@ -42,6 +50,8 @@ name, option key, plugin ID, theme hook, JS behavior key from 1.x.
 - Hooks moved to OOP `#[Hook]` classes.
 - `Drupal\vvjh\Twig\VVJHTwigExtension` removed: vvj_core ships the shared
   `safe_html` filter.
+- Code style: JavaScript and CSS follow Drupal core's ESLint, Stylelint and Prettier rules, and the spell-check job passes with a project word file. Rendering and behavior are unchanged.
+- Layout: Pattern layout now follows the width the Pattern itself gets (container queries on `vvj-region`) instead of the screen width, so Patterns lay out correctly in a narrow content column; overlays and the Pattern root keep screen-width queries.
 
 ### Drupal core / PHP
 

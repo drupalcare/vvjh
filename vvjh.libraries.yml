@@ -91,3 +91,15 @@ pattern.stack:
       patterns/stack/vvjh-stack.css: { weight: 210 }
   dependencies:
     - vvjh/vvjh-pattern-base
+
+# Theme bridges: loaded by vvj_patterns' library_info_alter as dependencies of vvjh-pattern-base; neutral themes load neither.
+# No dependency back on vvjh-pattern-base: that makes a loop and a memory fatal.
+pattern-bridge-solo:
+  css:
+    theme:
+      patterns/bridge/vvjh-bridge-solo.css: { weight: 206 }
+
+pattern-bridge-apex:
+  css:
+    theme:
+      patterns/bridge/vvjh-bridge-apex.css: { weight: 206 }

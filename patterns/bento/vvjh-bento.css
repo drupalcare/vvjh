@@ -10,8 +10,10 @@
 .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper-inner { position: relative; height: 100%; max-width: none; margin: 0; padding: 0; }
 .vvj-pattern--vvjh-bento .hero-image { position: absolute; inset: 0; }
 .vvj-pattern--vvjh-bento :where(.hero-image) img { transition: transform 1s var(--vvj-ease-out); }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper-inner::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.55) 45%, rgb(0 0 0 / 0) 75%); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-wrapper-inner::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--vvjh-bento-scrim); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .hero-content { position: absolute; z-index: 2; inset: auto 1.25rem 1.25rem; width: auto; margin: 0; padding: 0; color: var(--vvj-stage-color); }
+/* Scrim under the words (4.5:1 for the small text on the lightest photo); the photo itself stays as it is. */
+:where(.vvj-pattern--vvjh-bento) .hero-content::before { content: ""; position: absolute; inset: -75% -60% -60%; z-index: -1; pointer-events: none; background: var(--vvjh-scrim); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-kicker { font-size: 0.75rem; color: var(--vvj-stage-muted); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-title { margin: 0.3rem 0 0; font-size: clamp(1.25rem, 1.9vw, 1.6rem); font-weight: 700; line-height: 1.15; }
 .vvj-pattern--vvjh-bento .vvj-summary { max-width: 44ch; max-height: 0; overflow: hidden; opacity: 0; color: var(--vvj-stage-muted); transition: max-height 0.5s var(--vvj-ease-out), opacity 0.4s, padding 0.5s var(--vvj-ease-out); }
@@ -29,7 +31,7 @@
 .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-link a:is(:hover, :focus-visible)::after { -webkit-mask-image: var(--vvjh-icon-disc); mask-image: var(--vvjh-icon-disc); transform: rotate(-45deg); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-bento .vvj-link a:active::after { transform: rotate(-45deg) scale(0.9); }
 
-@media (min-width: 48rem) {
+@container vvj-region (min-width: 44rem) {
   .vvj-pattern--vvjh-bento .vvjh-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(17rem, auto); }
   :where(.vvj-pattern--vvjh-bento) .hero-wrapper:nth-child(1),
   :where(.vvj-pattern--vvjh-bento) .hero-wrapper:nth-child(4) { grid-column: span 2; }
@@ -40,7 +42,7 @@
   :where(.vvj-pattern--vvjh-bento[data-vvjh-ready]) .hero-image { opacity: 0; transform: scale(1.05); transition: opacity 0.9s var(--vvj-ease-out), transform 1.2s var(--vvj-ease-out); }
   :where(.vvj-pattern--vvjh-bento[data-vvjh-ready]) :where(.hero-wrapper.active) .hero-image { opacity: 1; transform: none; }
 }
-@media (min-width: 64rem) {
+@container vvj-region (min-width: 60rem) {
   .vvj-pattern--vvjh-bento .vvjh-inner { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(16.25rem, auto); }
   :where(.vvj-pattern--vvjh-bento) .hero-wrapper:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
   :where(.vvj-pattern--vvjh-bento) .hero-wrapper:nth-child(4) { grid-column: 3 / 5; }

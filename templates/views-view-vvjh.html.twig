@@ -48,7 +48,7 @@
 ] %}
 
 {# Render the main hero container #}
-<vvjh-hero {{ attributes.addClass(classes).setAttribute('id', hero_id) }} data-breakpoints="{{ breakpoint }}" role="region"{% if vvj_pattern and vvj_pattern_label %} aria-label="{{ vvj_pattern_label }}"{% endif %} tabindex="0">
+<vvjh-hero {{ attributes.addClass(classes).setAttribute('id', hero_id) }} data-breakpoints="{{ breakpoint }}" role="region"{% if vvj_pattern and vvj_pattern_label %} aria-label="{{ vvj_pattern_label }}"{% endif %}>
   <div class="vvjh-inner"{% if hero_item_width > 0 and item_class == 'vvjh-multiple' %} style="--hero-item-width: {{ hero_item_width }}"{% endif %}>
 
     {% for key, row in rows %}
@@ -59,13 +59,13 @@
       {% set hero_image = split_content[0] %}
       {% set hero_content = split_content[1]|default('') %}
 
-      <div class="hero-wrapper {{ hero_style }}" role="group" aria-labelledby="{{ hero_id }}-image-{{ key + 1 }} {{ hero_id }}-content-{{ key + 1 }}" tabindex="0">
+      <div class="hero-wrapper {{ hero_style }}">
         <div class="hero-wrapper-inner" style="--max-width: {{ max_width }}; --min-height: {{ min_height }};">
-          <div class="hero-image" role="img" aria-labelledby="{{ hero_id }}-image-{{ key + 1 }}" tabindex="0">
+          <div class="hero-image">
             {{ hero_image|safe_html }}
           </div>
 
-          <div class="hero-content {{ overlay_position }}" style="{% if background_rgb %} --bg-hero-color:{{ background_rgb }}; {% endif %}--hero-speed:{{ hero_speed }}; --animation-easing:{{ animation_easing }}; --max-content-width: {{ max_content_width }};" role="complementary" aria-labelledby="{{ hero_id }}-content-{{ key + 1 }}" tabindex="0">
+          <div class="hero-content {{ overlay_position }}" style="{% if background_rgb %} --bg-hero-color:{{ background_rgb }}; {% endif %}--hero-speed:{{ hero_speed }}; --animation-easing:{{ animation_easing }}; --max-content-width: {{ max_content_width }};">
             {{ hero_content|safe_html }}
           </div>
        </div>

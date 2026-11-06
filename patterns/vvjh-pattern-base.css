@@ -13,6 +13,16 @@
   --vvjh-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='4 4 16 16'%3E%3Cpath fill-rule='evenodd' d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E");
   --vvjh-icon-disc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-9 -9 42 42'%3E%3Cpath fill-rule='evenodd' d='M12-9a21 21 0 1 0 0 42a21 21 0 1 0 0-42zM12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E");
   --vvjh-icon-orbit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-9 -9 42 42'%3E%3Cpath fill-rule='evenodd' d='M12-9a21 21 0 1 0 0 42a21 21 0 1 0 0-42zM12-7.6a19.6 19.6 0 1 0 0 39.2a19.6 19.6 0 1 0 0-39.2zM12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'/%3E%3C/svg%3E");
+
+  /* Soft dark pool behind words that sit on a photo: a plateau under the whole text block, fading out around it. */
+  --vvjh-scrim: radial-gradient(closest-side, color-mix(in sRGB, var(--vvj-stage-bg) 74%, transparent) 72%, transparent 100%);
+
+  /* Photo scrims and the Stack card shadow: stage ground at the alpha steps of the black-and-white look. */
+  --vvjh-panels-scrim: linear-gradient(to top, color-mix(in sRGB, var(--vvj-stage-bg) 90%, transparent) 0%, color-mix(in sRGB, var(--vvj-stage-bg) 60%, transparent) 40%, color-mix(in sRGB, var(--vvj-stage-bg) 50%, transparent) 70%);
+  --vvjh-aperture-scrim: linear-gradient(to top, color-mix(in sRGB, var(--vvj-stage-bg) 88%, transparent) 0%, color-mix(in sRGB, var(--vvj-stage-bg) 60%, transparent) 40%, transparent 74%), linear-gradient(to right, color-mix(in sRGB, var(--vvj-stage-bg) 60%, transparent) 0%, transparent 62%);
+  --vvjh-bento-scrim: linear-gradient(to top, color-mix(in sRGB, var(--vvj-stage-bg) 90%, transparent) 0%, color-mix(in sRGB, var(--vvj-stage-bg) 55%, transparent) 45%, transparent 75%);
+  --vvjh-stack-shadow: 0 28px 60px -34px color-mix(in sRGB, var(--vvj-stage-bg) 45%, transparent);
+
   display: block;
   margin: 0;
   padding: 0;
@@ -22,26 +32,260 @@
 .vvj-pattern.vvjh,
 :where(.vvj-pattern.vvjh) *,
 :where(.vvj-pattern.vvjh) *::before,
-:where(.vvj-pattern.vvjh) *::after { box-sizing: border-box; }
+:where(.vvj-pattern.vvjh) *::after {
+  box-sizing: border-box;
+}
 
 /* Theme resets: headings, paragraphs, lists, images. */
-:where(.vvj-pattern.vvjh) :is(h1, h2, h3, h4, h5, h6, p) { margin: 0; padding: 0; font-size: inherit; line-height: inherit; color: inherit; hyphens: manual; overflow-wrap: normal; word-break: normal; }
-:where(.vvj-pattern.vvjh) :is(ul, ol, li) { list-style: none; margin: 0; padding: 0; }
-:where(.vvj-pattern.vvjh) :is(img, svg) { display: block; max-width: 100%; height: auto; }
+:where(.vvj-pattern.vvjh) :is(h1, h2, h3, h4, h5, h6, p) {
+  margin: 0;
+  padding: 0;
+  word-break: normal;
+  hyphens: manual;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  overflow-wrap: normal;
+}
+:where(.vvj-pattern.vvjh) :is(ul, ol, li) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+:where(.vvj-pattern.vvjh) :is(img, svg) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
 /* Beats the theme's h1-h6 colour; titles never hyphenate. */
-.vvj-pattern.vvjh .vvj-title { color: inherit; font-family: var(--vvj-font-display); font-weight: 600; letter-spacing: normal; text-transform: none; hyphens: manual; overflow-wrap: normal; word-break: normal; }
-.vvj-pattern.vvjh .vvj-kicker { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.vvj-pattern.vvjh .hero-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vvj-pattern.vvjh .vvj-title {
+  letter-spacing: normal;
+  text-transform: none;
+  word-break: normal;
+  hyphens: manual;
+  color: inherit;
+  font-family: var(--vvj-font-display);
+  font-weight: 600;
+  overflow-wrap: normal;
+}
+.vvj-pattern.vvjh .vvj-kicker {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.vvj-pattern.vvjh .hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* Link control: full reset, then the shared shape; each Pattern sets only its own values. */
-.vvj-pattern.vvjh .vvj-link { display: block; min-height: 0; margin: 0; padding: 0; }
-.vvj-pattern.vvjh .vvj-link a { appearance: none; display: inline-flex; align-items: center; gap: 0.6em; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: inherit; font: inherit; font-weight: 600; line-height: 1.2; letter-spacing: normal; text-transform: none; text-decoration: none; text-align: start; width: auto; height: auto; min-width: 0; min-height: 44px; vertical-align: middle; outline: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.vvj-pattern.vvjh .vvj-link a:focus-visible { outline: 3px solid var(--vvj-focus, currentColor); outline-offset: 3px; }
-.vvj-pattern.vvjh .vvj-link a::after { content: ""; display: block; flex: none; margin: 0; padding: 0; background: currentColor; -webkit-mask: var(--vvjh-icon-arrow) center / contain no-repeat; mask: var(--vvjh-icon-arrow) center / contain no-repeat; }
+.vvj-pattern.vvjh .vvj-link {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.vvj-pattern.vvjh .vvj-link a {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: start;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: normal;
+  text-transform: none;
+  color: inherit;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background: none;
+  box-shadow: none;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  appearance: none;
+  gap: 0.6em;
+  -webkit-tap-highlight-color: transparent;
+}
+.vvj-pattern.vvjh .vvj-link a:focus-visible {
+  outline: 3px solid var(--vvj-focus, currentColor);
+  outline-offset: 3px;
+}
+.vvj-pattern.vvjh .vvj-link a::after {
+  display: block;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  content: "";
+  background: currentColor;
+  -webkit-mask: var(--vvjh-icon-arrow) center / contain no-repeat;
+  mask: var(--vvjh-icon-arrow) center / contain no-repeat;
+}
+
+/*
+ * Placement and entrance, moved from the module breakpoint files
+ * (css/vvjh-NNN.css). Those apply by viewport and no longer match Pattern
+ * markup; here the same values follow the Pattern's container instead.
+ * Each Pattern's own rules still win where it sets the same property.
+ *
+ * The hidden start state (--vvjh-from: 0) is set by viewport, at the view's
+ * breakpoint, because vvjh-hero-element.js adds `.active` by that same
+ * viewport width; a wide container on a narrower screen never hides words
+ * that JavaScript would not reveal. `.active` sets it back to 1.
+ */
+@media (min-width: 36rem) {
+  .vvj-pattern.vvjh:where(.br-576) {
+    --vvjh-from: 0;
+  }
+}
+@media (min-width: 48rem) {
+  .vvj-pattern.vvjh:where(.br-768) {
+    --vvjh-from: 0;
+  }
+}
+@media (min-width: 62rem) {
+  .vvj-pattern.vvjh:where(.br-992) {
+    --vvjh-from: 0;
+  }
+}
+@media (min-width: 75rem) {
+  .vvj-pattern.vvjh:where(.br-1200) {
+    --vvjh-from: 0;
+  }
+}
+@media (min-width: 87.5rem) {
+  .vvj-pattern.vvjh:where(.br-1400) {
+    --vvjh-from: 0;
+  }
+}
+
+@container vvj-region (min-width: 44rem) {
+  .vvj-pattern.vvjh :where(.hero-wrapper-inner) {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    margin: auto;
+    padding: 0 1rem;
+    background-color: transparent;
+  }
+  .vvj-pattern.vvjh :where(.hero-content) {
+    position: relative;
+    margin: 0;
+    padding: 1rem;
+    transition: var(--hero-speed) var(--animation-easing);
+    opacity: var(--vvjh-from, 1);
+  }
+  .vvj-pattern.vvjh :where(.hero-image img) {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+  }
+
+  /* Overlay position. Stack places its words in the card flow, so not there. */
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-top-left {
+    position: absolute;
+    inset-inline-start: 16px;
+    top: 16px;
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-top-right {
+    position: absolute;
+    inset-inline-end: 16px;
+    top: 16px;
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-bottom-left {
+    position: absolute;
+    inset-inline-start: 16px;
+    bottom: 16px;
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-bottom-right {
+    position: absolute;
+    inset-inline-end: 16px;
+    bottom: 16px;
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-middle {
+    position: absolute;
+    top: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-left {
+    position: absolute;
+    top: 50%;
+    inset-inline-start: 16px;
+    transform: translate(-0%, -50%);
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-right {
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 16px;
+    transform: translate(0%, -50%);
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-top-middle {
+    position: absolute;
+    inset-inline-start: 50%;
+    top: 16px;
+    transform: translate(-50%, 0%);
+  }
+  :where(.vvj-pattern.vvjh:not(.vvj-pattern--vvjh-stack)) .hero-content.d-bottom-middle {
+    position: absolute;
+    inset-inline-start: 50%;
+    bottom: 16px;
+    transform: translate(-50%, 0%);
+  }
+
+  /* Entrance: from 0 the words start hidden and moved; from 1 they rest. These come after the overlay rules so their
+     transform wins, as the module's did. */
+  .vvj-pattern.vvjh :where(.hero-wrapper.a-zoom .hero-content) {
+    transform: scale(var(--vvjh-from, 1));
+  }
+  .vvj-pattern.vvjh :where(.hero-wrapper.a-top .hero-content) {
+    transform: translateY(calc((var(--vvjh-from, 1) - 1) * 100%));
+  }
+  .vvj-pattern.vvjh :where(.hero-wrapper.a-right .hero-content) {
+    transform: translateX(calc((1 - var(--vvjh-from, 1)) * 100%));
+  }
+  .vvj-pattern.vvjh :where(.hero-wrapper.a-bottom .hero-content) {
+    transform: translateY(calc((1 - var(--vvjh-from, 1)) * 100%));
+  }
+  .vvj-pattern.vvjh :where(.hero-wrapper.a-left .hero-content) {
+    transform: translateX(calc((var(--vvjh-from, 1) - 1) * 100%));
+  }
+  .vvj-pattern.vvjh :where(.hero-wrapper.active .hero-content) {
+    --vvjh-from: 1;
+  }
+}
+
+@container vvj-region (max-width: 43.99rem) {
+  .vvj-pattern.vvjh :where(.hero-wrapper-inner) {
+    width: 100%;
+    min-height: initial !important;
+    margin-block-end: 1rem;
+  }
+  .vvj-pattern.vvjh :where(.hero-content) {
+    width: 100%;
+    max-width: 100% !important;
+    margin-block-start: 1rem;
+    transition: none !important;
+    background-color: transparent !important;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   :where(.vvj-pattern.vvjh) *,
   :where(.vvj-pattern.vvjh) *::before,
-  :where(.vvj-pattern.vvjh) *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; animation: none !important; }
+  :where(.vvj-pattern.vvjh) *::after {
+    transition-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
 }

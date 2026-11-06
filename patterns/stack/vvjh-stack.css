@@ -15,8 +15,7 @@
 :where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(3) { --vvjh-i: 3; }
 :where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(4) { --vvjh-i: 4; }
 :where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(5) { --vvjh-i: 5; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper-inner { display: grid; max-width: none; padding: 0; overflow: hidden; border: 1px solid var(--vvj-line); border-radius: var(--vvj-radius); background: var(--vvj-raised); box-shadow: 0 28px 60px -34px rgb(0 0 0 / 0.45); transform-origin: 50% 0; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-image img { aspect-ratio: 4 / 3; height: auto; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper-inner { display: grid; max-width: none; padding: 0; overflow: hidden; border: 1px solid var(--vvj-line); border-radius: var(--vvj-radius); background: var(--vvj-raised); box-shadow: var(--vvjh-stack-shadow); transform-origin: 50% 0; }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content { display: flex; flex-direction: column; gap: 0.9rem; margin: 0; padding: clamp(1.25rem, 4vw, 3.25rem); color: var(--vvj-ink); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content::before { content: counter(vvjh-stack, decimal-leading-zero) " / " counter(vvjh-total, decimal-leading-zero); font: 650 0.8125rem/1 ui-monospace, menlo, consolas, monospace; letter-spacing: 0.12em; color: var(--vvj-muted); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-title { font-size: clamp(1.6rem, 3.2vw, 2.75rem); font-weight: 750; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
@@ -30,17 +29,25 @@
 .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:is(:hover, :focus-visible)::after { background: var(--vvj-ink); -webkit-mask-position: calc(50% + 3px) center; mask-position: calc(50% + 3px) center; }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:active { transform: translateY(1px); }
 
-@media (min-width: 48rem) {
+/* Narrow: the photo sits in the flow at 4:3 (the module breakpoint CSS would take it out of the flow). */
+@container vvj-region (max-width: 43.99rem) {
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-image img { position: static; aspect-ratio: 4 / 3; height: auto; }
+}
+
+@container vvj-region (min-width: 44rem) {
   .vvj-pattern--vvjh-stack .hero-wrapper { position: sticky; inset: calc(1.5rem + (var(--vvjh-i) - 1) * 14px) auto auto; }
   .vvj-pattern--vvjh-stack .hero-wrapper-inner { grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); min-height: var(--min-height); }
-  .vvj-pattern--vvjh-stack .hero-image { position: relative; }
+  /* Fill the card height (the module centers grid items, which left the photo column empty above). */
+  .vvj-pattern--vvjh-stack .hero-image { position: relative; align-self: stretch; }
   .vvj-pattern--vvjh-stack :where(.hero-image) img { aspect-ratio: auto; }
   .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content { position: relative; inset: auto; max-width: none; justify-content: center; transition-property: opacity, transform; }
 }
 
 @keyframes vvjh-stack-recede { to { transform: scale(0.9); filter: brightness(0.72); } }
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (min-width: 48rem) {
-    .vvj-pattern--vvjh-stack :where(.hero-wrapper:not(:last-child)) .hero-wrapper-inner { animation: vvjh-stack-recede linear both; animation-timeline: --vvjh-stack; animation-range: exit-crossing calc((var(--vvjh-i) - 1) / var(--vvjh-n) * 100%) exit-crossing calc(var(--vvjh-i) / var(--vvjh-n) * 100%); }
+  @media (prefers-reduced-motion: no-preference) {
+    @container vvj-region (min-width: 44rem) {
+      .vvj-pattern--vvjh-stack :where(.hero-wrapper:not(:last-child)) .hero-wrapper-inner { animation: vvjh-stack-recede linear both; animation-timeline: --vvjh-stack; animation-range: exit-crossing calc((var(--vvjh-i) - 1) / var(--vvjh-n) * 100%) exit-crossing calc(var(--vvjh-i) / var(--vvjh-n) * 100%); }
+    }
   }
 }

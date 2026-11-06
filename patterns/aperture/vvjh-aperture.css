@@ -20,7 +20,7 @@
 .vvj-pattern.vvjh.vvj-pattern--vvjh-aperture .vvj-link a:active { transform: scale(0.97); }
 
 /* Phone: below the 768 breakpoint vvjh stacks the words under the photo. */
-@media (max-width: 47.99rem) {
+@container vvj-region (max-width: 43.99rem) {
   .vvj-pattern--vvjh-aperture .hero-image { aspect-ratio: 4 / 5; max-height: 72vh; overflow: hidden; }
   .vvj-pattern.vvjh.vvj-pattern--vvjh-aperture .hero-content { padding: 1.5rem 1.25rem 2rem; color: var(--vvj-ink); }
   .vvj-pattern--vvjh-aperture .vvj-summary { color: var(--vvj-muted); }
@@ -28,11 +28,13 @@
   .vvj-pattern.vvjh.vvj-pattern--vvjh-aperture .vvj-link a:is(:hover, :focus-visible) { color: var(--vvj-surface); box-shadow: none; }
 }
 
-@media (min-width: 48rem) {
+@container vvj-region (min-width: 44rem) {
   .vvj-pattern--vvjh-aperture .hero-image { position: absolute; inset: 0; }
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-aperture .hero-wrapper-inner::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgb(0 0 0 / 0.88) 0%, rgb(0 0 0 / 0.6) 40%, rgb(0 0 0 / 0) 74%), linear-gradient(to right, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 62%); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-aperture .hero-wrapper-inner::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--vvjh-aperture-scrim); }
   .vvj-pattern.vvjh.vvj-pattern--vvjh-aperture .hero-content { z-index: 2; inset: auto auto clamp(1.5rem, 8vh, 5rem) clamp(1.25rem, 5vw, 4.5rem); padding: 0; color: var(--vvj-stage-color); transition-property: opacity, transform; }
   .vvj-pattern--vvjh-aperture .vvj-summary { color: var(--vvj-stage-muted); }
+  /* Scrim under the words (4.5:1 for the small text on the lightest photo); the photo itself stays as it is. */
+  :where(.vvj-pattern--vvjh-aperture) .hero-content::before { content: ""; position: absolute; inset: -75% -60% -60%; z-index: -1; pointer-events: none; background: var(--vvjh-scrim); }
   /* Closed only after hydration, so without JavaScript the photo shows. */
   .vvj-pattern.vvjh.vvj-pattern--vvjh-aperture[data-vvjh-ready] .hero-wrapper:not(.active) .hero-image { clip-path: circle(0% at 22% 78%); }
   .vvj-pattern--vvjh-aperture :where(.hero-wrapper.active) .hero-image { clip-path: circle(150% at 22% 78%); transition: clip-path 1.6s var(--vvj-ease-out); }
@@ -45,8 +47,10 @@
 @keyframes vvjh-aperture-drift { to { transform: scale(1.12) translateY(5%); } }
 @keyframes vvjh-aperture-lift { to { opacity: 0; transform: translateY(-8%); } }
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (min-width: 48rem) {
-    .vvj-pattern--vvjh-aperture :where(.hero-image) img { animation: vvjh-aperture-drift linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
-    .vvj-pattern--vvjh-aperture :where(.hero-wrapper.active) :where(.hero-content) > * { animation: vvjh-aperture-lift linear both; animation-timeline: view(); animation-range: exit 10% exit 70%; }
+  @media (prefers-reduced-motion: no-preference) {
+    @container vvj-region (min-width: 44rem) {
+      .vvj-pattern--vvjh-aperture :where(.hero-image) img { animation: vvjh-aperture-drift linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+      .vvj-pattern--vvjh-aperture :where(.hero-wrapper.active) :where(.hero-content) > * { animation: vvjh-aperture-lift linear both; animation-timeline: view(); animation-range: exit 10% exit 70%; }
+    }
   }
 }
