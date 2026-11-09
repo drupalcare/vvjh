@@ -4,32 +4,32 @@
  * (the first when none is) opens four times wider. CSS only.
  */
 
-.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner { display: grid; gap: 10px; counter-reset: vvjh-panel; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner { display: grid; gap: var(--vvj-space-10, 10px); counter-reset: vvjh-panel; }
 .vvj-pattern--vvjh-panels .hero-wrapper { position: relative; isolation: isolate; counter-increment: vvjh-panel; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper::before { content: counter(vvjh-panel, decimal-leading-zero); position: absolute; z-index: 3; inset-block: 1rem auto; inset-inline: 1rem auto; padding: 0.2rem 0.6rem; border: 1px solid var(--vvj-stage-line); border-radius: 999px; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; color: var(--vvj-stage-color); background: var(--vvj-glass-bg); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper::before { content: counter(vvjh-panel, decimal-leading-zero); position: absolute; z-index: 3; inset-block: 1rem auto; inset-inline: 1rem auto; padding: var(--vvj-space-3, 3px) var(--vvj-space-10, 10px); border: 1px solid var(--vvj-stage-line); border-radius: var(--vvj-radius-pill, 999px); font-size: var(--vvj-text-13, 0.8125rem); font-weight: 700; letter-spacing: 0.08em; color: var(--vvj-stage-color); background: var(--vvj-glass-bg); }
 .vvj-pattern--vvjh-panels .hero-image { overflow: hidden; border-radius: var(--vvj-radius); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-weight: 750; line-height: 1.05; letter-spacing: -0.02em; }
 
 /* Link: the underline draws in, the arrow slides. */
-.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; font-weight: 650; background: linear-gradient(currentColor, currentColor) 0 calc(100% - 8px) / 0% 2px no-repeat; transition: background-size 0.35s var(--vvj-ease-out); }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a::after { width: 0.9em; height: 0.9em; transition: transform 0.35s var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a { display: inline-flex; align-items: center; gap: var(--vvj-space-8, 8px); min-height: 44px; font-weight: 650; background: linear-gradient(currentColor, currentColor) 0 calc(100% - 8px) / 0% 2px no-repeat; transition: background-size var(--vvj-dur-350, 0.35s) var(--vvj-ease-out); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a::after { width: 0.9em; height: 0.9em; transition: transform var(--vvj-dur-350, 0.35s) var(--vvj-ease-out); }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a:is(:hover, :focus-visible) { background-size: 100% 2px; }
 .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-link a:is(:hover, :focus-visible)::after { transform: translateX(4px); }
 
 /* Phone: a stacked list, every panel open, words under the photo. */
 @container vvj-region (max-width: 43.99rem) {
   .vvj-pattern--vvjh-panels .hero-image { aspect-ratio: 16 / 10; }
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-content { padding: 0.9rem 0.25rem 1.25rem; color: var(--vvj-ink); }
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-size: 1.6rem; }
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-summary { margin: 0.35rem 0 0; color: var(--vvj-muted); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-content { padding: var(--vvj-space-14, 14px) var(--vvj-space-4, 4px) var(--vvj-space-20, 20px); color: var(--vvj-ink); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-size: var(--vvj-text-26, 1.625rem); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-summary { margin: var(--vvj-space-6, 6px) 0 0; color: var(--vvj-muted); }
 }
 
 @container vvj-region (min-width: 44rem) {
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner { display: flex; }
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper { flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--vvj-radius); cursor: pointer; transition: flex-grow 0.7s var(--vvj-ease-out); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper { flex: 1 1 0; min-width: 0; overflow: hidden; border-radius: var(--vvj-radius); cursor: pointer; transition: flex-grow var(--vvj-dur-700, 0.7s) var(--vvj-ease-out); }
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper-inner { position: relative; height: 100%; max-width: none; padding: 0; }
   .vvj-pattern--vvjh-panels .hero-image { position: absolute; inset: 0; border-radius: 0; }
-  .vvj-pattern--vvjh-panels :where(.hero-image) img { transform: scale(1.08); filter: grayscale(0.45) brightness(0.8); transition: transform 1s var(--vvj-ease-out), filter 0.7s; }
+  .vvj-pattern--vvjh-panels :where(.hero-image) img { transform: scale(1.08); filter: grayscale(0.45) brightness(0.8); transition: transform var(--vvj-dur-1000, 1s) var(--vvj-ease-out), filter var(--vvj-dur-700, 0.7s); }
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper-inner::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--vvjh-panels-scrim); }
   /* The words keep the OPEN panel's width the whole time, so they never reflow while the strip grows; the strip's
      overflow clips them until it is wide enough. Open width = (row - gaps) x 4 / (panels + 3). */
@@ -42,19 +42,26 @@
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-content { z-index: 2; inset-block: auto 1.5rem; inset-inline: 1.25rem auto; width: calc((100cqi - (var(--vvjh-n, 5) - 1) * 10px) * 4 / (var(--vvjh-n, 5) + 3) - 2.5rem); padding: 0; color: var(--vvj-stage-color); transition-property: opacity, transform; }
   /* Closed strip: only the title, rotated. The summary is hidden visually, not with display:none, so screen readers
      still reach it; the link stays focusable and its focus opens the strip through :focus-within. */
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-size: 1.5rem; white-space: nowrap; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-title { font-size: var(--vvj-text-24, 1.5rem); white-space: nowrap; writing-mode: vertical-rl; transform: rotate(180deg); }
   /* Scrim under the words (4.5:1 for the small text on the lightest photo); the photo itself stays as it is. */
   :where(.vvj-pattern--vvjh-panels) .hero-content::before { content: ""; position: absolute; inset: -75% -60% -60%; z-index: -1; pointer-events: none; background: var(--vvjh-scrim); }
-  .vvj-pattern--vvjh-panels .vvj-summary { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .vvj-pattern--vvjh-panels :is(.vvj-summary, .vvj-link) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* A closed strip's words stay inside it: the box runs from under the number
+     to the foot of the strip, and a long title wraps into a second column
+     instead of running out of the top (measured on an 840px wide region). */
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:has(:hover, :focus-within) > .hero-wrapper:not(:hover, :focus-within) .hero-content,
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner > .hero-wrapper:not(:first-child, :hover, :focus-within) .hero-content { inset-block: 4rem 1.5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:has(:hover, :focus-within) > .hero-wrapper:not(:hover, :focus-within) .vvj-title,
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner > .hero-wrapper:not(:first-child, :hover, :focus-within) .vvj-title { min-height: 0; max-height: 100%; overflow: hidden; white-space: normal; }
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper:is(:hover, :focus-within),
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child { flex-grow: 4; }
   .vvj-pattern--vvjh-panels :where(.hero-wrapper:is(:hover, :focus-within)) :where(.hero-image) img,
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child .hero-image img { transform: none; filter: none; }
   .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .hero-wrapper:is(:hover, :focus-within) .vvj-title,
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child .vvj-title { font-size: clamp(2rem, 3.4vw, 3.25rem); white-space: normal; writing-mode: horizontal-tb; transform: none; transform-origin: 0 100%; animation: vvjh-panels-turn 0.6s var(--vvj-ease-out) 0.2s both; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child .vvj-title { font-size: clamp(2rem, 3.4cqi, 3.25rem); white-space: normal; writing-mode: horizontal-tb; transform: none; transform-origin: 0 100%; animation: vvjh-panels-turn var(--vvj-dur-600, 0.6s) var(--vvj-ease-out) var(--vvj-dur-200, 0.2s) both; }
   .vvj-pattern--vvjh-panels :where(.hero-wrapper:is(:hover, :focus-within)) :is(.vvj-summary, .vvj-link),
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child :is(.vvj-summary, .vvj-link) { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: block; animation: vvjh-panels-in 0.55s var(--vvj-ease-out) 0.4s both; }
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-summary { max-width: 40ch; margin: 0.6rem 0 0.4rem; font-size: 1.0625rem; color: var(--vvj-stage-muted); }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvjh-inner:not(:has(:hover, :focus-within)) > .hero-wrapper:first-child :is(.vvj-summary, .vvj-link) { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: block; animation: vvjh-panels-in var(--vvj-dur-550, 0.55s) var(--vvj-ease-out) var(--vvj-dur-400, 0.4s) both; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-panels .vvj-summary { max-width: 40ch; margin: var(--vvj-space-10, 10px) 0 var(--vvj-space-6, 6px); font-size: var(--vvj-text-17, 1.0625rem); color: var(--vvj-stage-muted); }
 }
 @keyframes vvjh-panels-in { from { opacity: 0; transform: translateY(14px); } }
 /* The title lies down from the strip's upright reading angle to horizontal, pivoting on its first letter. */

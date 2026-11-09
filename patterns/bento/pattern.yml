@@ -1,6 +1,10 @@
 label: 'Bento'
 description: 'Four hero cards in a bento grid: the first is large; cards zoom in one after another and open their summary on hover or focus.'
 weight: 1
+stage: open
+ground: dark
+placement: neither
+serves: [saas, corporate, publication]
 options:
   overlay_position: 'd-bottom-left'
   hero_style: 'a-zoom'

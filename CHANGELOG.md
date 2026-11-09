@@ -16,6 +16,11 @@ name, option key, plugin ID, theme hook, JS behavior key from 1.x.
 
 ### Fixed
 
+- Patterns: Stack uses the shared monospace variable; the focus outline reads a declared variable.
+- Patterns: spacing, corner radius, type size, shadow and motion read shared `--vvj-*` variables with fallbacks, so a site or theme can adjust them in one place; a few odd values moved to the nearest step, under 10%.
+- Patterns: each Pattern states its stage, ground, placement and the kinds of site it serves best in `pattern.yml`.
+- Patterns: sizes that followed the screen width (`vw`) now follow the Pattern's own width (`cqi`), so a Pattern in a sidebar or narrow column keeps its proportions.
+- Patterns: Panels keeps a closed strip's title inside the strip (it wraps into a second column instead of running out of the top) and hides the closed strip's link until the strip opens.
 - Patterns: the breakpoint files (`css/vvjh-NNN.css`) no longer match Pattern markup; the placement, entrance and narrow resets Patterns used from them now live in `vvjh-pattern-base.css` and follow the Pattern's container, so Panels in a narrow column on a wide screen shows its phone layout with readable words.
 - Accessibility: Aperture, Bento and Panels put a soft dark scrim under the words that sit on a photo, so the text keeps its contrast on a light photo.
 - Accessibility: the hero no longer adds four empty tab stops per item or `aria-labelledby` references to ids that do not exist (the `role="img"` wrapper hid the real image alt). Panels: a closed strip's summary is hidden visually instead of with `display: none`, so screen readers reach it; focusing the link opens the strip.

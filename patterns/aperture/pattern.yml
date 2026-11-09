@@ -1,6 +1,10 @@
 label: 'Aperture'
 description: 'One full-bleed hero: the photo opens as a circle from the text corner, then the title rises word by word.'
 weight: 0
+stage: open
+ground: dark
+placement: neither
+serves: [creative, studio, cultural]
 options:
   overlay_position: 'd-bottom-left'
   hero_style: 'a-bottom'

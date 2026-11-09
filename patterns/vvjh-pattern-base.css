@@ -72,7 +72,7 @@
 .vvj-pattern.vvjh .vvj-kicker {
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.8125rem;
+  font-size: var(--vvj-text-13, 0.8125rem);
   font-weight: 700;
 }
 .vvj-pattern.vvjh .hero-image img {
@@ -175,13 +175,13 @@
     overflow: hidden;
     align-items: center;
     margin: auto;
-    padding: 0 1rem;
+    padding: 0 var(--vvj-space-16, 16px);
     background-color: transparent;
   }
   .vvj-pattern.vvjh :where(.hero-content) {
     position: relative;
     margin: 0;
-    padding: 1rem;
+    padding: var(--vvj-space-16, 16px);
     transition: var(--hero-speed) var(--animation-easing);
     opacity: var(--vvjh-from, 1);
   }
@@ -269,12 +269,12 @@
   .vvj-pattern.vvjh :where(.hero-wrapper-inner) {
     width: 100%;
     min-height: initial !important;
-    margin-block-end: 1rem;
+    margin-block-end: var(--vvj-space-16, 16px);
   }
   .vvj-pattern.vvjh :where(.hero-content) {
     width: 100%;
     max-width: 100% !important;
-    margin-block-start: 1rem;
+    margin-block-start: var(--vvj-space-16, 16px);
     transition: none !important;
     background-color: transparent !important;
   }

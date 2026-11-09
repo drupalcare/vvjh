@@ -1,6 +1,10 @@
 label: 'Panels'
 description: 'A row of vertical strips: the hovered or focused strip opens wide, its photo regains color and its words rise in.'
 weight: 2
+stage: open
+ground: dark
+placement: neither
+serves: [events, university, creative]
 options:
   overlay_position: 'd-bottom-left'
   hero_style: 'a-left'
