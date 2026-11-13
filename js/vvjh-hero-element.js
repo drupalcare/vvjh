@@ -36,6 +36,14 @@
       this._breakpoint =
         Number.isFinite(breakpoint) && breakpoint > 0 ? breakpoint : 576;
 
+      // Progressive enhancement: the hero text is visible until this point
+      // (with no JS it stays visible). `.vvjh-hydrated` turns on the hidden
+      // start state; reading layout commits that state before `.active` is
+      // added, so the entrance transition still runs.
+      this.classList.add('vvjh-hydrated');
+      // eslint-disable-next-line no-unused-expressions
+      this.offsetHeight;
+
       this._toggleActive();
       window.addEventListener('resize', () => this._toggleActive(), {
         signal: this.signal,

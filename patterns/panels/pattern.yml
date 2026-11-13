@@ -21,6 +21,10 @@ options:
   hero_item_width: 0
   enable_css: false
 features: []
+pictures:
+  vvj_image:
+    style: vvj_landscape_1200
+    responsive: false
 needs:
   - 'Row style Fields. First field the image (style vvj_landscape_1200), then title (h2.vvj-title), summary (p.vvj-summary), link (p.vvj-link).'
   - 'Three to five items.'

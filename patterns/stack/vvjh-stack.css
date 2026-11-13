@@ -6,48 +6,171 @@
  */
 
 /* Sticky cards need an ancestor that does not clip (vvjh.css hides overflow). */
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner { --vvjh-n: 3; display: grid; gap: clamp(1.5rem, 8vh, 5rem); overflow: visible; counter-reset: vvjh-stack vvjh-total var(--vvjh-n); view-timeline: --vvjh-stack block; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(2):last-child) { --vvjh-n: 2; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(4):last-child) { --vvjh-n: 4; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(5):last-child) { --vvjh-n: 5; }
-.vvj-pattern--vvjh-stack .hero-wrapper { --vvjh-i: 1; counter-increment: vvjh-stack; }
-:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(2) { --vvjh-i: 2; }
-:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(3) { --vvjh-i: 3; }
-:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(4) { --vvjh-i: 4; }
-:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(5) { --vvjh-i: 5; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper-inner { display: grid; max-width: none; padding: 0; overflow: hidden; border: 1px solid var(--vvj-line); border-radius: var(--vvj-radius); background: var(--vvj-raised); box-shadow: var(--vvjh-stack-shadow); transform-origin: 50% 0; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content { display: flex; flex-direction: column; gap: var(--vvj-space-14, 14px); margin: 0; padding: clamp(1.25rem, 4cqi, 3.25rem); color: var(--vvj-ink); }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content::before { content: counter(vvjh-stack, decimal-leading-zero) " / " counter(vvjh-total, decimal-leading-zero); font: 650 var(--vvj-text-13, 0.8125rem)/1 var(--vvj-font-mono, monospace); letter-spacing: 0.12em; color: var(--vvj-muted); }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-title { font-size: clamp(1.6rem, 3.2cqi, 2.75rem); font-weight: 750; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
-.vvj-pattern--vvjh-stack .vvj-summary { max-width: 38ch; font-size: var(--vvj-text-17, 1.0625rem); color: var(--vvj-muted); }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link { margin: var(--vvj-space-8, 8px) 0 0; }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner {
+  --vvjh-n: 3;
+
+  display: grid;
+  gap: clamp(1.5rem, 8vh, 5rem);
+  overflow: visible;
+  counter-reset: vvjh-stack vvjh-total var(--vvjh-n);
+  view-timeline: --vvjh-stack block;
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(2):last-child) {
+  --vvjh-n: 2;
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(4):last-child) {
+  --vvjh-n: 4;
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvjh-inner:has(> .hero-wrapper:nth-child(5):last-child) {
+  --vvjh-n: 5;
+}
+.vvj-pattern--vvjh-stack .hero-wrapper {
+  --vvjh-i: 1;
+
+  counter-increment: vvjh-stack;
+}
+:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(2) {
+  --vvjh-i: 2;
+}
+:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(3) {
+  --vvjh-i: 3;
+}
+:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(4) {
+  --vvjh-i: 4;
+}
+:where(.vvj-pattern--vvjh-stack) .hero-wrapper:nth-child(5) {
+  --vvjh-i: 5;
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-wrapper-inner {
+  display: grid;
+  overflow: hidden;
+  max-width: none;
+  padding: 0;
+  transform-origin: 50% 0;
+  border: 1px solid var(--vvj-line);
+  border-radius: var(--vvj-radius);
+  background: var(--vvj-raised);
+  box-shadow: var(--vvjh-stack-shadow);
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vvj-space-14, 14px);
+  margin: 0;
+  padding: clamp(1.25rem, 4cqi, 3.25rem);
+  color: var(--vvj-ink);
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content::before {
+  content: counter(vvjh-stack, decimal-leading-zero) " / " counter(vvjh-total, decimal-leading-zero);
+  letter-spacing: 0.12em;
+  color: var(--vvj-muted);
+  font: 650 var(--vvj-text-13, 0.8125rem) / 1 var(--vvj-font-mono, monospace);
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-title {
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  font-size: clamp(1.6rem, 3.2cqi, 2.75rem);
+  font-weight: 750;
+  line-height: 1.08;
+}
+.vvj-pattern--vvjh-stack .vvj-summary {
+  max-width: 38ch;
+  color: var(--vvj-muted);
+  font-size: var(--vvj-text-17, 1.0625rem);
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link {
+  margin: var(--vvj-space-8, 8px) 0 0;
+}
 
 /* Split button: label, a thin line, and an arrow segment that inverts on hover. */
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a { --vvjh-stack-seg: transparent; display: inline-flex; align-items: center; gap: var(--vvj-space-18, 18px); min-height: 48px; padding-inline: var(--vvj-space-18, 18px) 0; overflow: hidden; border-radius: var(--vvj-radius-12, 12px); font-weight: 650; color: var(--vvj-surface); background: linear-gradient(var(--vvjh-stack-seg), var(--vvjh-stack-seg)) right top / 48px 100% no-repeat, linear-gradient(currentColor, currentColor) right 48px top / 1px 100% no-repeat, var(--vvj-ink); transition: transform var(--vvj-dur-150, 0.15s); }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a::after { align-self: stretch; width: 48px; -webkit-mask-size: 0.9rem; mask-size: 0.9rem; transition: -webkit-mask-position var(--vvj-dur-350, 0.35s) var(--vvj-ease-out), mask-position var(--vvj-dur-350, 0.35s) var(--vvj-ease-out); }
-:where(.vvj-pattern--vvjh-stack) :where(.vvj-link) a:is(:hover, :focus-visible) { --vvjh-stack-seg: var(--vvj-surface); }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:is(:hover, :focus-visible)::after { background: var(--vvj-ink); -webkit-mask-position: calc(50% + 3px) center; mask-position: calc(50% + 3px) center; }
-.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:active { transform: translateY(1px); }
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a {
+  --vvjh-stack-seg: transparent;
+
+  display: inline-flex;
+  overflow: hidden;
+  align-items: center;
+  min-height: 48px;
+  transition: transform var(--vvj-dur-150, 0.15s);
+  color: var(--vvj-surface);
+  border-radius: var(--vvj-radius-12, 12px);
+  background:
+    linear-gradient(var(--vvjh-stack-seg), var(--vvjh-stack-seg)) right top / 48px 100% no-repeat,
+    linear-gradient(currentColor, currentColor) right 48px top / 1px 100% no-repeat,
+    var(--vvj-ink);
+  font-weight: 650;
+  gap: var(--vvj-space-18, 18px);
+  padding-inline: var(--vvj-space-18, 18px) 0;
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a::after {
+  align-self: stretch;
+  width: 48px;
+  -webkit-mask-size: 0.9rem;
+  mask-size: 0.9rem;
+  transition:
+    -webkit-mask-position var(--vvj-dur-350, 0.35s) var(--vvj-ease-out),
+    mask-position var(--vvj-dur-350, 0.35s) var(--vvj-ease-out);
+}
+:where(.vvj-pattern--vvjh-stack) :where(.vvj-link) a:is(:hover, :focus-visible) {
+  --vvjh-stack-seg: var(--vvj-surface);
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:is(:hover, :focus-visible)::after {
+  background: var(--vvj-ink);
+  -webkit-mask-position: calc(50% + 3px) center;
+  mask-position: calc(50% + 3px) center;
+}
+.vvj-pattern.vvjh.vvj-pattern--vvjh-stack .vvj-link a:active {
+  transform: translateY(1px);
+}
 
 /* Narrow: the photo sits in the flow at 4:3 (the module breakpoint CSS would take it out of the flow). */
 @container vvj-region (max-width: 43.99rem) {
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-image img { position: static; aspect-ratio: 4 / 3; height: auto; }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-image img {
+    position: static;
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
 }
 
 @container vvj-region (min-width: 44rem) {
-  .vvj-pattern--vvjh-stack .hero-wrapper { position: sticky; inset: calc(1.5rem + (var(--vvjh-i) - 1) * 14px) auto auto; }
-  .vvj-pattern--vvjh-stack .hero-wrapper-inner { grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); min-height: var(--min-height); }
+  .vvj-pattern--vvjh-stack .hero-wrapper {
+    position: sticky;
+    inset: calc(1.5rem + (var(--vvjh-i) - 1) * 14px) auto auto;
+  }
+  .vvj-pattern--vvjh-stack .hero-wrapper-inner {
+    grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+    min-height: var(--min-height);
+  }
   /* Fill the card height (the module centers grid items, which left the photo column empty above). */
-  .vvj-pattern--vvjh-stack .hero-image { position: relative; align-self: stretch; }
-  .vvj-pattern--vvjh-stack :where(.hero-image) img { aspect-ratio: auto; }
-  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content { position: relative; inset: auto; max-width: none; justify-content: center; transition-property: opacity, transform; }
+  .vvj-pattern--vvjh-stack .hero-image {
+    position: relative;
+    align-self: stretch;
+  }
+  .vvj-pattern--vvjh-stack :where(.hero-image) img {
+    aspect-ratio: auto;
+  }
+  .vvj-pattern.vvjh.vvj-pattern--vvjh-stack .hero-content {
+    position: relative;
+    justify-content: center;
+    max-width: none;
+    transition-property: opacity, transform;
+    inset: auto;
+  }
 }
 
-@keyframes vvjh-stack-recede { to { transform: scale(0.9); filter: brightness(0.72); } }
+@keyframes vvjh-stack-recede {
+  to {
+    transform: scale(0.9);
+    filter: brightness(0.72);
+  }
+}
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     @container vvj-region (min-width: 44rem) {
-      .vvj-pattern--vvjh-stack :where(.hero-wrapper:not(:last-child)) .hero-wrapper-inner { animation: vvjh-stack-recede linear both; animation-timeline: --vvjh-stack; animation-range: exit-crossing calc((var(--vvjh-i) - 1) / var(--vvjh-n) * 100%) exit-crossing calc(var(--vvjh-i) / var(--vvjh-n) * 100%); }
+      .vvj-pattern--vvjh-stack :where(.hero-wrapper:not(:last-child)) .hero-wrapper-inner {
+        animation: vvjh-stack-recede linear both;
+        animation-timeline: --vvjh-stack;
+        animation-range: exit-crossing calc((var(--vvjh-i) - 1) / var(--vvjh-n) * 100%) exit-crossing calc(var(--vvjh-i) / var(--vvjh-n) * 100%);
+      }
     }
   }
 }

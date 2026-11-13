@@ -29,6 +29,11 @@
     margin: 0;
     padding: 1rem;
     transition: var(--hero-speed) var(--animation-easing);
+  }
+
+  /* Hidden and moved only once the script has hydrated (it adds
+     .vvjh-hydrated): with no JS the hero text stays visible. */
+  .vvjh.br-576.vvjh-hydrated:where(:not(.vvj-pattern)) .hero-content {
     opacity: 0;
   }
 
@@ -41,27 +46,27 @@
     object-fit: cover;
   }
 
-  :where(.vvjh.br-576:where(:not(.vvj-pattern))) :where(.hero-wrapper.a-fade) .hero-content {
+  :where(.vvjh.br-576.vvjh-hydrated:where(:not(.vvj-pattern))) :where(.hero-wrapper.a-fade) .hero-content {
     opacity: 0;
   }
 
-  .vvjh.br-576:where(:not(.vvj-pattern)) .hero-wrapper.a-zoom .hero-content {
+  .vvjh.br-576.vvjh-hydrated:where(:not(.vvj-pattern)) .hero-wrapper.a-zoom .hero-content {
     transform: scale(0);
   }
 
-  .vvjh.br-576:where(:not(.vvj-pattern)) .hero-wrapper.a-top .hero-content {
+  .vvjh.br-576.vvjh-hydrated:where(:not(.vvj-pattern)) .hero-wrapper.a-top .hero-content {
     transform: translateY(-100%);
   }
 
-  .vvjh.br-576:where(:not(.vvj-pattern)) .hero-wrapper.a-right .hero-content {
+  .vvjh.br-576.vvjh-hydrated:where(:not(.vvj-pattern)) .hero-wrapper.a-right .hero-content {
     transform: translateX(100%);
   }
 
-  .vvjh.br-576:where(:not(.vvj-pattern)) .hero-wrapper.a-bottom .hero-content {
+  .vvjh.br-576.vvjh-hydrated:where(:not(.vvj-pattern)) .hero-wrapper.a-bottom .hero-content {
     transform: translateY(100%);
   }
 
-  .vvjh.br-576:where(:not(.vvj-pattern)) .hero-wrapper.a-left .hero-content {
+  .vvjh.br-576.vvjh-hydrated:where(:not(.vvj-pattern)) .hero-wrapper.a-left .hero-content {
     transform: translateX(-100%);
   }
 

@@ -21,6 +21,10 @@ options:
   hero_item_width: 0
   enable_css: false
 features: []
+pictures:
+  vvj_image:
+    style: vvj_wide_1600
+    responsive: false
 needs:
-  - 'Row style Fields. First field the image (style vvj_cinema_1680), then kicker (p.vvj-kicker), title (h2.vvj-title), summary (p.vvj-summary), link (p.vvj-link).'
+  - 'Row style Fields. First field the image (style vvj_wide_1600), then kicker (p.vvj-kicker), title (h2.vvj-title), summary (p.vvj-summary), link (p.vvj-link).'
   - 'One item (pager: some, 1).'

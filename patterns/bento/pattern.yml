@@ -21,6 +21,10 @@ options:
   hero_item_width: 0
   enable_css: false
 features: []
+pictures:
+  vvj_image:
+    style: vvj_landscape_1200
+    responsive: false
 needs:
   - 'Row style Fields. First field the image (style vvj_landscape_1200), then kicker (p.vvj-kicker), title (h2.vvj-title), summary (p.vvj-summary), link (p.vvj-link).'
   - 'Four items (pager: some, 4): the bento spans are drawn for four cards.'

@@ -2,6 +2,11 @@
 
 ## [2.0.0] (UNRELEASED)
 
+- Accessibility: the hero is a named region only when a Pattern gives it a name (an unnamed region is not a landmark); the hero text no longer slides, zooms or fades in when the visitor asks for reduced motion; without JavaScript the hero text is visible (it is hidden for the entrance effect only after the script runs).
+
+### Fixed
+
+- The 992 px breakpoint's base hero rule used the class `br-990`, so its position, padding and opacity never applied; it now uses `br-992`.
 - Accessibility: in Windows high contrast (forced colors) the Pattern icons stay visible; they are masks painted with the text color, which the system used to replace.
 
 **Drop-in upgrade for 1.x sites.** v2 modernizes internals: extends `vvj_core`
